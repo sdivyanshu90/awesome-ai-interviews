@@ -1,0 +1,8 @@
+### Q: What are vectors, matrices, tensors, shapes, strides, broadcasting, and batched matrix multiplication?
+* **Difficulty:** Junior
+* **Category:** Math
+* **The 10-Second Pitch:** Vectors are rank-1 arrays, matrices rank-2, and tensors the general rank-n case. Shape defines logical axis sizes; stride defines the memory jump needed to advance one element along each axis. Broadcasting creates compatible logical views without necessarily copying data, and batched matrix multiplication applies matrix products across leading batch dimensions.
+* **The Deep Dive:** For `X[B,T,D] @ W[D,H]`, contraction removes `D` and produces `[B,T,H]`. A contiguous row-major tensor has strides determined by products of trailing dimensions; transpose usually changes strides rather than data. Broadcasting right-aligns shapes and permits equal axes or size-one expansion. It is not arbitrary repetition: `[B,T,D] + [D]` is valid, but `[B,T,D] + [B]` is not without reshaping. Batched GEMM treats leading axes as independent products. Shape algebra should be written before code because equal accidental dimensions can conceal a wrong transpose.\n\n```text\n[B,T,D] × [D,H] → [B,T,H]\n[B,T,H] + [H]    → [B,T,H]   # broadcast over B,T\n```
+* **Production Reality & Tradeoffs:** Logical broadcasting may still trigger materialization in downstream kernels. Non-contiguous views can force copies, hurt coalescing, or break custom kernels. Track dtype and device as part of the tensor contract.
+* **Red Flag:** Describing a tensor only as a multidimensional array without being able to derive output shapes or explain strides.
+
