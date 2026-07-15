@@ -1,0 +1,10 @@
+### Q: Compare Bernoulli, categorical, Gaussian, Poisson, exponential, beta, Dirichlet, and multinomial distributions.
+* **Difficulty:** Mid
+* **Category:** Probability
+* **The 10-Second Pitch:** Choose by support and generative process: Bernoulli/categorical model one discrete trial, multinomial counts repeated categorical trials, Gaussian continuous additive variation, Poisson counts events, exponential waiting time, and beta/Dirichlet random probabilities.
+* **The Deep Dive:** Bernoulli$(p)$ has $x\in\{0,1\}$ and mean $p$. Categorical$(\pi)$ chooses one of $K$ outcomes; multinomial$(n,\pi)$ gives $K$ counts summing to $n$. Gaussian$(\mu,\sigma^2)$ has real support and mean/variance parameters. Poisson$(\lambda)$ has nonnegative integer count with equal mean/variance under its assumptions; exponential$(\lambda)$ has nonnegative waiting time and memoryless hazard, and arises between homogeneous Poisson events. Beta$(\alpha,\beta)$ is a distribution on one probability; Dirichlet$(\boldsymbol\alpha)$ is on a simplex.
+
+Conjugacy makes updates concrete: Beta-Bernoulli and Dirichlet-categorical/multinomial add observed counts to concentration parameters; Gamma is the common conjugate prior for Poisson rate. Distribution choice is not only output support: Poisson assumes equidispersion, Gaussian homoscedasticity in its simplest form, and categorical observations conditionally independent. Negative binomial handles overdispersed counts; zero-inflated/hurdle models handle excess zeros; log-normal/gamma may fit positive continuous values.
+* **Production Reality & Tradeoffs:** Validate residuals, dispersion, censoring, truncation, and dependence. Neural heads parameterize valid domains with sigmoid/softmax/softplus, but numerical stability requires logits and log-probability kernels. Misspecified likelihoods distort uncertainty even if point predictions look good.
+* **Red Flag:** Using Poisson for any nonnegative target or confusing a categorical draw with a multinomial count vector.
+
