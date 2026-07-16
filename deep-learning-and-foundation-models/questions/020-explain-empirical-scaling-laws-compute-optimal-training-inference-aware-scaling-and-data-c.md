@@ -1,0 +1,12 @@
+### Q: Explain empirical scaling laws, compute-optimal training, inference-aware scaling, and data-constrained regimes.
+* **Difficulty:** Principal
+* **Category:** Foundation Models
+* **The 10-Second Pitch:** Scaling laws fit empirical loss as power-law-like functions of parameters, data, and compute within a regime. Compute-optimal training allocates a fixed budget between model size and tokens; inference-aware planning includes lifetime serving cost, and finite unique data changes the optimum.
+* **The Deep Dive:** A common empirical form is $L(N,D)\approx L_\infty+aN^{-\alpha}+bD^{-\beta}$, with training compute roughly $C\propto ND$ for dense Transformers. Under fixed $C$, minimize fitted loss to choose $N$ and $D$; the result depends on architecture, tokenizer, data quality, optimizer, and fitted range—not a universal token-per-parameter constant. IsoFLOP experiments train several sizes/token counts at equal compute and fit the envelope.
+
+If a model will serve enormous token volume, a smaller compute-optimal training model may be expensive at inference; spending more training compute on a smaller/distilled model can minimize lifecycle cost at a quality target. Data-constrained regimes face repetition: additional epochs create diminishing returns/overfitting, so data quality, mixture, augmentation/synthetic data, and regularization enter the law. Sparse MoE separates total from active parameters and network cost.
+
+Extrapolate with uncertainty and test multiple scales before frontier commitment. Track loss and downstream/safety capabilities; apparent emergence can result from thresholded metrics.
+* **Production Reality & Tradeoffs:** Power laws can break across architecture/data changes and do not predict rare capabilities or safety. FLOPs ignore utilization, communication, failures, and energy. Data contamination can falsely improve fitted curves. Use laws for resource decisions, not guarantees.
+* **Red Flag:** Quoting one published compute-optimal ratio as timeless, or sizing only training compute while ignoring inference volume and unique-data limits.
+
