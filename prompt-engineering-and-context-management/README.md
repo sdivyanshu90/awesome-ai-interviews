@@ -1,0 +1,46 @@
+# 3. Prompt Engineering & Context Management
+
+Every syllabus question has one independent Markdown answer file. The index separates question discovery from answer content.
+
+| # | Question | Difficulty | Category | Answer |
+|---:|---|---|---|---|
+| 1 | What mechanisms may explain in-context learning without parameter updates? | Junior | Conceptual | [Open answer](questions/001-what-mechanisms-may-explain-in-context-learning-without-parameter-updates.md) |
+| 2 | How should demonstrations be selected, ordered, balanced, and formatted? | Senior | Prompt Design | [Open answer](questions/002-how-should-demonstrations-be-selected-ordered-balanced-and-formatted.md) |
+| 3 | How should system, developer, user, assistant, and tool instructions resolve conflicts? | Mid | Safety | [Open answer](questions/003-how-should-system-developer-user-assistant-and-tool-instructions-resolve-conflicts.md) |
+| 4 | Why are delimiters useful but insufficient against direct and indirect prompt injection? | Senior | Security | [Open answer](questions/004-why-are-delimiters-useful-but-insufficient-against-direct-and-indirect-prompt-injection.md) |
+| 5 | Design prompts for JSON, XML, SQL, code, and function arguments with explicit missing-data behavior. | Mid | Implementation | [Open answer](questions/005-design-prompts-for-json-xml-sql-code-and-function-arguments-with-explicit-missing-data-beh.md) |
+| 6 | Compare direct answering, chain-of-thought, scratchpads, self-consistency, least-to-most, and decomposition. | Senior | Reasoning | [Open answer](questions/006-compare-direct-answering-chain-of-thought-scratchpads-self-consistency-least-to-most-and-d.md) |
+| 7 | Compare truncation, sliding windows, summaries, hierarchical context, retrieval, and structured state. | Senior | System Design | [Open answer](questions/007-compare-truncation-sliding-windows-summaries-hierarchical-context-retrieval-and-structured.md) |
+| 8 | Build a loss-aware conversation summarizer that preserves constraints, decisions, provenance, and uncertainty. | Principal | System Design | [Open answer](questions/008-build-a-loss-aware-conversation-summarizer-that-preserves-constraints-decisions-provenance.md) |
+| 9 | Compare prefix/KV prompt caching, provider caching, semantic caching, and response caching. | Senior | Performance | [Open answer](questions/009-compare-prefix-kv-prompt-caching-provider-caching-semantic-caching-and-response-caching.md) |
+| 10 | When should you choose long context, RAG, summaries, tools, fine-tuning, or a hybrid? | Principal | System Design | [Open answer](questions/010-when-should-you-choose-long-context-rag-summaries-tools-fine-tuning-or-a-hybrid.md) |
+| 11 | How should prompts, examples, schemas, tool definitions, and decoding settings be versioned together? | Principal | LLMOps | [Open answer](questions/011-how-should-prompts-examples-schemas-tool-definitions-and-decoding-settings-be-versioned-to.md) |
+| 12 | Diagnose why a playground prompt fails under production serialization, context, traffic, or model versions. | Principal | Debugging | [Open answer](questions/012-diagnose-why-a-playground-prompt-fails-under-production-serialization-context-traffic-or-m.md) |
+| 13 | Compare zero-shot, one-shot, few-shot, and many-shot prompting. | Junior | Conceptual | [Open answer](questions/013-compare-zero-shot-one-shot-few-shot-and-many-shot-prompting.md) |
+| 14 | How do recency, primacy, label, verbalizer, and example-order biases affect few-shot prompts? | Senior | Prompt Engineering | [Open answer](questions/014-how-do-recency-primacy-label-verbalizer-and-example-order-biases-affect-few-shot-prompts.md) |
+| 15 | How do role, delimiters, contracts, positive instructions, and examples change compliance? | Mid | Prompt Engineering | [Open answer](questions/015-how-do-role-delimiters-contracts-positive-instructions-and-examples-change-compliance.md) |
+| 16 | Compare tree-of-thought, graph search, beam reasoning, MCTS, verifiers, and program execution. | Principal | Reasoning | [Open answer](questions/016-compare-tree-of-thought-graph-search-beam-reasoning-mcts-verifiers-and-program-execution.md) |
+| 17 | When should reasoning be replaced by retrieval, calculators, code, formal solvers, or deterministic rules? | Senior | System Design | [Open answer](questions/017-when-should-reasoning-be-replaced-by-retrieval-calculators-code-formal-solvers-or-determin.md) |
+| 18 | Why does visible reasoning fail as proof, explanation, or safety evidence? | Principal | Reasoning | [Open answer](questions/018-why-does-visible-reasoning-fail-as-proof-explanation-or-safety-evidence.md) |
+| 19 | Compare prompting, schema validation, grammar-constrained decoding, and semantic validation. | Senior | Implementation | [Open answer](questions/019-compare-prompting-schema-validation-grammar-constrained-decoding-and-semantic-validation.md) |
+| 20 | How do stop sequences, logit bias, sampling, retries, and repair loops affect structured reliability? | Senior | Inference | [Open answer](questions/020-how-do-stop-sequences-logit-bias-sampling-retries-and-repair-loops-affect-structured-relia.md) |
+| 21 | Design a prompt for extraction from noisy, conflicting, multilingual documents. | Senior | Prompt Engineering | [Open answer](questions/021-design-a-prompt-for-extraction-from-noisy-conflicting-multilingual-documents.md) |
+| 22 | Design a prompt for safe code generation and minimal repository edits. | Senior | Prompt Engineering | [Open answer](questions/022-design-a-prompt-for-safe-code-generation-and-minimal-repository-edits.md) |
+| 23 | Build a prompt regression suite with golden, adversarial, metamorphic, and stochastic tests. | Principal | Evaluation | [Open answer](questions/023-build-a-prompt-regression-suite-with-golden-adversarial-metamorphic-and-stochastic-tests.md) |
+| 24 | Allocate a token budget across instructions, examples, conversation, retrieval, tools, and output. | Senior | Context Management | [Open answer](questions/024-allocate-a-token-budget-across-instructions-examples-conversation-retrieval-tools-and-outp.md) |
+| 25 | Compare working, episodic, semantic, procedural, and user-profile memory. | Principal | Context Management | [Open answer](questions/025-compare-working-episodic-semantic-procedural-and-user-profile-memory.md) |
+| 26 | How do memory scope, TTL, correction, deletion, authorization, and poisoning controls work? | Principal | Security | [Open answer](questions/026-how-do-memory-scope-ttl-correction-deletion-authorization-and-poisoning-controls-work.md) |
+| 27 | Explain lost-in-the-middle behavior and evidence placement strategies. | Senior | Context Management | [Open answer](questions/027-explain-lost-in-the-middle-behavior-and-evidence-placement-strategies.md) |
+| 28 | Design cache keys, tenant isolation, invalidation, model-version migration, and privacy controls. | Principal | Performance | [Open answer](questions/028-design-cache-keys-tenant-isolation-invalidation-model-version-migration-and-privacy-contro.md) |
+| 29 | Evaluate long-context instruction retention, distractor robustness, cross-document reasoning, and citation use. | Principal | Evaluation | [Open answer](questions/029-evaluate-long-context-instruction-retention-distractor-robustness-cross-document-reasoning.md) |
+| 30 | How should untrusted documents, webpages, emails, and tool outputs be represented in context? | Senior | Security | [Open answer](questions/030-how-should-untrusted-documents-webpages-emails-and-tool-outputs-be-represented-in-context.md) |
+| 31 | Design a prompt-plus-policy pipeline for side-effecting tool use and human approval. | Principal | System Design | [Open answer](questions/031-design-a-prompt-plus-policy-pipeline-for-side-effecting-tool-use-and-human-approval.md) |
+| 32 | How do you prevent prompt exfiltration, secret disclosure, cross-tenant memory leakage, and instruction smuggling? | Principal | Security | [Open answer](questions/032-how-do-you-prevent-prompt-exfiltration-secret-disclosure-cross-tenant-memory-leakage-and-i.md) |
+| 33 | How should prompts express uncertainty, abstention, clarification, and conflicting-evidence handling? | Principal | Prompt Engineering | [Open answer](questions/033-how-should-prompts-express-uncertainty-abstention-clarification-and-conflicting-evidence-h.md) |
+| 34 | Diagnose prompt brittleness under distribution shift, multilingual inputs, long context, and adversarial text. | Principal | Debugging | [Open answer](questions/034-diagnose-prompt-brittleness-under-distribution-shift-multilingual-inputs-long-context-and.md) |
+| 35 | Implement a typed prompt renderer, token-budget allocator, schema validator, and bounded retry loop. | Mid | Coding | [Open answer](questions/035-implement-a-typed-prompt-renderer-token-budget-allocator-schema-validator-and-bounded-retr.md) |
+
+**Implemented question count:** 35
+
+[Back to complete syllabus](../SYLLABUS.md)
+
