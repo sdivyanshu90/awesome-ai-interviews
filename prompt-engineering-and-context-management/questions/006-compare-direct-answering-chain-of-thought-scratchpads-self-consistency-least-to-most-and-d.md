@@ -1,0 +1,10 @@
+### Q: Compare direct answering, chain-of-thought, scratchpads, self-consistency, least-to-most, and decomposition.
+* **Difficulty:** Senior
+* **Category:** Reasoning
+* **The 10-Second Pitch:** These methods allocate test-time computation differently: direct answers are cheapest; scratchpads externalize intermediate state; self-consistency samples paths; least-to-most/decomposition solve subproblems. None guarantees faithful reasoning, so verify outputs with evidence/tools.
+* **The Deep Dive:** Direct answering minimizes tokens/latency and is strong for simple or pattern-matched tasks. A scratchpad asks for intermediate computation, which can improve multi-step performance but adds tokens and may expose sensitive/unfaithful rationales; private structured state or tool traces are often safer than displaying free-form CoT. Self-consistency samples multiple reasoning paths and aggregates final answers, helping when errors are partly independent but multiplying cost and failing on correlated misconceptions. Least-to-most creates ordered subproblems whose solutions condition later steps; generic decomposition assigns subtasks possibly in parallel and needs interface/merge verification.
+
+Choose from task structure and a verifier. Arithmetic should use a calculator/code; retrieval should use sources; constraints should use a solver/parser. Evaluate counterfactual premises and intermediate-state perturbations to determine whether the result depends on claimed steps. Final correctness, calibration, cost, and latency matter more than plausible prose.
+* **Production Reality & Tradeoffs:** Long reasoning can reduce quality through drift and context consumption. Aggregation requires canonical answers and tie/abstention policy. Decomposition creates propagation errors. Avoid exposing hidden chain-of-thought as proof; provide concise evidence-backed explanations.
+* **Red Flag:** Assuming a longer rationale is more correct or faithful, or using majority vote among highly correlated samples as verification.
+
