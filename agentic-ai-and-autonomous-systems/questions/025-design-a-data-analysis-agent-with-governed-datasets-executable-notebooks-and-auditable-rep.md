@@ -1,0 +1,9 @@
+### Q: Design a data-analysis agent with governed datasets, executable notebooks, and auditable reports.
+* **Difficulty:** Principal
+* **Category:** System Design
+* **The 10-Second Pitch:** Authenticate the analyst, expose cataloged read-only datasets through policy, plan queries, execute code in an isolated reproducible environment, validate results, and generate a report whose claims link to queries, snapshots, and artifacts.
+* **The Deep Dive:** A catalog supplies schemas, lineage, classifications, row/column policies, and freshness. The agent proposes a structured analysis plan; query service applies identity and limits. Sandbox pins packages, blocks uncontrolled egress, and stores notebook/code, parameters, dataset snapshot IDs, stdout/errors, and generated figures. Statistical checks cover leakage, missingness, sample size, multiple testing, and uncertainty. Reports cite cells/query hashes and distinguish observations from interpretation. Sensitive exports require approval.
+* **Production Reality & Tradeoffs:** LLMs can invent columns or misread correlations. Use schema introspection and execution feedback. Large scans need cost estimates and quotas; derived artifacts inherit source classification.
+Governed analysis separates plan, executable code, results, and narrative. Dataset handles enforce row/column policy; code runs in a network-isolated kernel with resource limits; outputs carry query/code/data snapshot hashes. Validate units, joins, denominators, missingness, leakage, and statistical assumptions before the model writes conclusions. The report cites generated tables and records every transformation. Publishing, emailing, or writing back data is a separate approved effect.
+
+* **Red Flag:** Letting generated SQL bypass row-level security or presenting unexecuted code results.
