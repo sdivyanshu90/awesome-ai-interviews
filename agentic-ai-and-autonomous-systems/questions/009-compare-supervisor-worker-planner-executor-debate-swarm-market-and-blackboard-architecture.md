@@ -1,0 +1,9 @@
+### Q: Compare supervisor-worker, planner-executor, debate, swarm, market, and blackboard architectures.
+* **Difficulty:** Principal
+* **Category:** Architecture
+* **The 10-Second Pitch:** A supervisor-worker design centralizes delegation; planner-executor separates decomposition from action; debate creates competing candidates; swarms decentralize routing; a blackboard shares structured state. Use the smallest topology that has clear specialization and measurable task-success benefit.
+* **The Deep Dive:** Multi-agent systems do not create independent truth by default: correlated models can repeat the same error. Define each role’s authority, input contract, output schema, budget, and conflict-resolution policy. Shared blackboards require ownership and merge rules; private context can limit contamination but loses common situational awareness.
+Multi-agent topology should follow information and authority boundaries, not simulated job titles. Supervisors simplify control but bottleneck; blackboards share state but invite contamination; debate adds correlated compute; markets require meaningful bids/utilities; swarms increase coordination complexity. Measure marginal task lift after matching total tokens and tool calls against a single-agent baseline. Give each participant scoped inputs and capabilities, require provenance, and use independent verification rather than majority voting among clones with correlated errors.
+
+* **Production Reality & Tradeoffs:** Each handoff adds latency, tokens, security boundaries, and evaluation complexity. Parallel agents should operate on independent evidence or explicitly diverse prompts; otherwise they are expensive self-consistency.
+* **Red Flag:** Splitting one simple task across many identical agents because “more agents means more intelligence.”
