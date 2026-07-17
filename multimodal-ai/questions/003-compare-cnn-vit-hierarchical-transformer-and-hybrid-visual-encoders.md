@@ -1,0 +1,9 @@
+### Q: Compare CNN, ViT, hierarchical Transformer, and hybrid visual encoders.
+* **Difficulty:** Senior
+* **Category:** Architecture
+* **The 10-Second Pitch:** CNNs encode locality and translation equivariance; plain ViTs use global token interaction; hierarchical Transformers progressively downsample and add local windows; hybrids combine convolutional stems with attention. Data scale and serving regime determine the best prior.
+* **The Deep Dive:** CNN cost is spatially local and weight-shared. ViT global attention gives flexible long-range interaction but costs `O(N²)` in patches and learns locality from data. Hierarchical models build multi-scale pyramids suited to detection/segmentation. Hybrids use convolutions for low-level texture and attention for global context. Compare receptive field, pretraining data, resolution, output granularity, and kernel maturity.
+* **Production Reality & Tradeoffs:** ViTs can be excellent at scale but brittle under resolution/domain shift. CNNs may be faster on edge hardware. Window attention reduces cost but needs cross-window mixing. Benchmark target hardware and downstream transfer.
+CNNs impose locality and translation-equivariant weight sharing, making them sample-efficient; vanilla ViTs permit global mixing but require positional treatment and often more data. Hierarchical transformers progressively downsample and use local windows, recovering multiscale features for detection. Hybrids use convolutional stems or blocks before attention. Compare equal pretraining, resolution, parameters, and downstream adaptation: architecture labels alone do not predict latency because kernels, token count, memory layout, and hardware dominate.
+
+* **Red Flag:** Claiming Transformers always outperform CNNs or that CNNs cannot model global context.
