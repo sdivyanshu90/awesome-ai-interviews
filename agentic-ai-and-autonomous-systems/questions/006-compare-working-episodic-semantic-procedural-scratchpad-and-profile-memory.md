@@ -1,0 +1,9 @@
+### Q: Compare working, episodic, semantic, procedural, scratchpad, and profile memory.
+* **Difficulty:** Principal
+* **Category:** Architecture
+* **The 10-Second Pitch:** Keep authoritative task state structured and local; store replayable event history as episodic memory; use retrieval-backed semantic memory for reusable knowledge. Every memory item needs provenance, scope, freshness, permission, and deletion behavior.
+* **The Deep Dive:** Current task state includes variables, tool outcomes, approvals, and pending actions—not a prose summary. Episodic memory records what happened and enables audit/replay. Semantic memory stores facts/lessons but must not silently override current policy or user data. Retrieval is selective; memories should be treated as untrusted evidence when appropriate.
+Working memory is request-scoped typed state. Episodic memory records provenance-linked events; semantic memory stores consolidated facts; procedural memory stores approved workflows; profile memory contains consented preferences. Retrieval is a policy decision over identity, purpose, recency, confidence, and sensitivity. Summaries are lossy derivatives, so retain source pointers and support correction/deletion propagation. Avoid writing model inferences as facts; separate observation, user assertion, system record, and derived hypothesis.
+
+* **Production Reality & Tradeoffs:** Memory can leak data across users or become stale. Tenant isolation, TTLs, correction paths, and source citations are required before personalization claims are credible.
+* **Red Flag:** Persisting the entire conversation as “memory” with no access control or expiration.
