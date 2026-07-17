@@ -1,0 +1,9 @@
+### Q: Compare autoregressive, non-autoregressive, diffusion, and codec-language-model TTS.
+* **Difficulty:** Senior
+* **Category:** Speech
+* **The 10-Second Pitch:** Autoregressive TTS predicts acoustic units sequentially; non-autoregressive models generate in parallel using duration/alignment; diffusion iteratively denoises; codec LMs generate discrete semantic/acoustic tokens. They trade latency, stability, expressiveness, and controllability.
+* **The Deep Dive:** Classic pipelines predict mel spectrograms then vocode. Autoregressive attention can be expressive but repeats/skips and is slow. FastSpeech-style models use durations and parallel frames. Diffusion/flow models condition on text/speaker and refine noise with quality-step trade-offs. Codec LMs model token streams, often semantic then acoustic codebooks, enabling prompting and long-form generation. Vocoder/decoder reconstructs waveform.
+* **Production Reality & Tradeoffs:** Streaming needs incremental text normalization, chunk consistency, low first-audio latency, and cross-fade. Voice cloning creates consent/security risks. Evaluate pronunciation, prosody, speaker similarity, artifacts, and real-time factor.
+Autoregressive TTS models acoustic/code tokens sequentially and capture prosody but accumulate latency; non-autoregressive systems predict durations/frames in parallel but may smooth variation; diffusion iteratively denoises high-quality acoustics at sampling cost; codec language models generate compact discrete codes that a decoder renders. Separate text normalization, semantic/prosody planning, acoustic generation, and vocoding. Evaluate pronunciation, speaker leakage, long-form consistency, controllability, and real-time factor under streaming.
+
+* **Red Flag:** Comparing TTS only by MOS without latency or intelligibility.
