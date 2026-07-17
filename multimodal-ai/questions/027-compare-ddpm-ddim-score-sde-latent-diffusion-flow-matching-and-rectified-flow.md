@@ -1,0 +1,9 @@
+### Q: Compare DDPM, DDIM, score-SDE, latent diffusion, flow matching, and rectified flow.
+* **Difficulty:** Senior
+* **Category:** Generative Models
+* **The 10-Second Pitch:** DDPM learns stochastic reverse diffusion; DDIM defines a non-Markovian path enabling deterministic/fewer-step sampling; score-SDE uses continuous-time scores; latent diffusion denoises compressed latents; flow matching learns a velocity field; rectified flow seeks straighter transport paths.
+* **The Deep Dive:** DDPM discretizes a variance schedule. DDIM reuses the trained denoiser with adjustable stochasticity. Score-SDE describes forward/reverse stochastic differential equations and probability-flow ODE. Latent diffusion moves expensive spatial computation into VAE latent space, trading reconstruction loss. Flow matching regresses vector fields along chosen probability paths; rectified-flow/reflow aims to straighten trajectories for few steps. Objectives/samplers are related but not interchangeable without conventions.
+* **Production Reality & Tradeoffs:** Compare NFE, wall time, memory, fidelity, diversity, likelihood, and controllability. Few-step methods may need distillation and can lose rare modes. VAE artifacts bound latent models.
+DDPM uses a stochastic discrete reverse chain; DDIM defines a related non-Markovian sampler that can be deterministic; score-SDE expresses continuous-time stochastic/reverse dynamics; latent diffusion performs the process in compressed autoencoder space; flow matching learns a velocity field along a chosen probability path; rectified flow favors straighter transport paths. Compare training target, solver evaluations, stochasticity, latent reconstruction ceiling, and likelihood assumptions—not just sample-step count.
+
+* **Red Flag:** Saying DDIM is just DDPM with fewer arbitrary steps.
