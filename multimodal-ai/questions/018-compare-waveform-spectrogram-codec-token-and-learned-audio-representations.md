@@ -1,0 +1,9 @@
+### Q: Compare waveform, spectrogram, codec-token, and learned audio representations.
+* **Difficulty:** Senior
+* **Category:** Audio
+* **The 10-Second Pitch:** Waveforms preserve all samples but are long; spectrograms expose time-frequency structure; codec tokens discretize compressed acoustic content; learned encoders optimize task-specific continuous features. Representation controls sequence length and lost information.
+* **The Deep Dive:** Waveform models learn filters but need high-rate sequences. Log-mel features discard phase and compress frequency, strong for ASR. Neural codecs use encoder, residual vector quantizers, and decoder; multiple codebooks represent coarse-to-fine audio and enable language modeling at lower rates. Self-supervised encoders learn contextual features from masking/contrastive prediction. Semantic tokens may preserve content while losing speaker/prosody; acoustic tokens do the reverse.
+* **Production Reality & Tradeoffs:** Codec artifacts and sample/codebook rates affect generation. Continuous features are hard to autoregress; discrete tokens introduce quantization error and long multi-codebook sequences. Match representation to ASR, music, TTS, or event tasks.
+Waveform models preserve phase and timing but operate on very long sequences. Spectrograms expose local frequency structure while discarding or separating phase. Neural codecs compress audio into discrete multi-codebook tokens suitable for language modeling but introduce reconstruction artifacts and a fixed bitrate. Learned continuous encoders optimize features for tasks rather than faithful reconstruction. Compare representation rate, receptive field, latency, editability, speaker/prosody retention, and robustness to codec/domain shift.
+
+* **Red Flag:** Assuming codec tokens are equivalent to text tokens.
