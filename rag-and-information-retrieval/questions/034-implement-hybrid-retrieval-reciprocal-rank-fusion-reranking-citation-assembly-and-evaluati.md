@@ -1,0 +1,9 @@
+### Q: Implement hybrid retrieval, reciprocal-rank fusion, reranking, citation assembly, and evaluation.
+* **Difficulty:** Mid
+* **Category:** Coding
+* **The 10-Second Pitch:** Build lexical and dense candidate generators, fuse deduplicated ranks with RRF, rerank authorized candidates, assemble versioned evidence spans, and compute retrieval plus citation metrics on frozen fixtures.
+* **The Deep Dive:** Normalize document identity across indexes. Run BM25 and ANN, retain raw ranks/scores, and fuse with $\operatorname{RRF}(d)=\sum_{r\in\mathcal R}(k+\operatorname{rank}_r(d))^{-1}$. Deduplicate chunks and enforce filters before evidence exposure. Batch top candidates through a cross-encoder with an explicit truncation policy. Prompt with stable span IDs; parse citations and verify they reference supplied spans. Unit tests cover empty lists, duplicate documents, tied ranks, filters, stale versions, and unsupported claims. Offline evaluation computes Recall@$k$, MRR, nDCG, answer support, and citation correctness separately.
+* **Production Reality & Tradeoffs:** Use async timeouts and stage traces. A notebook prototype usually omits ACLs, index versions, retries, and reproducibility; production code must not. Profile p95 with realistic candidate lengths.
+Structure implementation around pure stages with typed records so fixtures can replace each backend. The end-to-end test must assert candidate identities/ranks, ACL filtering, stable span IDs, reranker order, parsed citations, and unsupported-claim behavior—not a particular fluent wording. Trace query/index/model versions and stage latency. Load tests include empty/duplicate/skewed candidates, selective filters, one retriever timeout, cancellation, and index migration.
+
+* **Red Flag:** Returning a fluent answer as the only integration test.
