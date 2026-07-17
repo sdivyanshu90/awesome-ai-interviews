@@ -1,0 +1,9 @@
+### Q: Diagnose representation collapse, shortcut learning, spurious correlations, and cross-dataset shift in vision encoders.
+* **Difficulty:** Principal
+* **Category:** Debugging
+* **The 10-Second Pitch:** Inspect embedding variance/rank and retrieval, then use counterfactual and slice tests to determine whether the encoder learned semantic content or shortcuts such as background, watermark, camera, or text artifacts.
+* **The Deep Dive:** Collapse appears as low variance, high pairwise similarity, or few effective singular directions. Contrastive collapse may be partial by modality/class. Shortcut tests mask backgrounds, remove text/watermarks, alter color, or transplant objects while preserving labels. Evaluate by source, device, geography, lighting, compression, and acquisition pipeline. Linear probes can expose encoded nuisance attributes but do not prove causal use; intervention tests are stronger.
+* **Production Reality & Tradeoffs:** Augmentation can remove shortcuts or create unrealistic invariances. Domain adaptation may improve one dataset while forgetting another. Keep source provenance and counterfactual regression sets.
+Collapse means representations lose discriminative variance; diagnose covariance spectrum, feature uniformity, and retrieval entropy. Shortcut learning preserves apparent accuracy while relying on backgrounds, watermarks, text overlays, or collection artifacts. Use counterfactual edits, background swaps, source-held-out splits, and subgroup calibration. Cross-dataset shift separates label-space mismatch from acquisition shift. Strong in-domain linear-probe accuracy can coexist with brittle grounding, so inspect attention/attribution only as hypotheses and verify through interventions.
+
+* **Red Flag:** Using only aggregate in-distribution accuracy to declare robust visual representations.
