@@ -1,0 +1,9 @@
+### Q: Design inpainting, image-to-image, ControlNet, reference conditioning, personalization, and editing.
+* **Difficulty:** Principal
+* **Category:** System Design
+* **The 10-Second Pitch:** All inject extra conditions while controlling which source information is preserved: masks/noised source for inpainting/img2img, spatial control encoders for ControlNet, image adapters for references, and adapters/embeddings for personalization.
+* **The Deep Dive:** Inpainting keeps unmasked regions consistent while denoising masked latents, often reimposing source noise each step. Img2img starts at a noise level controlling edit strength. ControlNet copies/conditions backbone features with zero-initialized residuals from edges/depth/pose. Reference adapters cross-attend image embeddings. Personalization uses textual inversion, LoRA, or subject tuning with prior-preservation data. Editing must preserve identity/layout outside requested changes.
+* **Production Reality & Tradeoffs:** Masks and VAE reconstruction can alter untouched pixels. Personalized models can memorize or enable impersonation. Conditions conflict; define precedence and evaluate preservation versus edit success.
+Inpainting combines a mask, noised source latent, and generated region while re-imposing known pixels/latents each step; image-to-image begins from a noised encoding whose strength controls preservation. ControlNet-like branches inject spatial conditions; reference adapters inject identity/style features; personalization changes or adds weights. These controls can conflict, so define precedence and measure identity, structure, text adherence, and background leakage. Masks require feathering/context to avoid seams; personalization data needs consent and memorization checks.
+
+* **Red Flag:** Assuming a stronger prompt alone provides pixel-level edit control.
