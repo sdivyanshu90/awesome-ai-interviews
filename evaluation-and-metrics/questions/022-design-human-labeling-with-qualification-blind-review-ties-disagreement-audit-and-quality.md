@@ -1,0 +1,8 @@
+### Q: Design human labeling with qualification, blind review, ties, disagreement, audit, and quality control.
+* **Difficulty:** Principal
+* **Category:** Human Evaluation
+* **The 10-Second Pitch:** Translate the construct into observable labels, qualify domain-appropriate raters, blind irrelevant identity, preserve legitimate ties/disagreement, and combine redundancy, adjudication, and audits with fair rater operations.
+* **The Deep Dive:** Write a label ontology with positive/negative examples, edge cases, severity, unknown, and tie states. Pilot it with experts and revise ambiguous instructions before scale. Qualify raters using representative cases, not trivia; route medical/legal/language tasks to appropriate expertise. Randomize order, blind model/version where possible, and prevent cross-item leakage. Collect multiple independent labels on a stratified subset, measure agreement by category/slice, and adjudicate material disagreements while recording rationale. Quality controls include hidden gold items, duplicated consistency items, time/outlier analysis, and review—not punitive traps alone. Capture source evidence and reason codes. Audit sampling should oversample high-severity, new, and low-agreement cases. Version guidelines and retain provenance.
+* **Production Reality & Tradeoffs:** Forced consensus hides ambiguity; majority vote can be systematically wrong. Excessive surveillance and unrealistic speed targets degrade data and worker welfare. Account for rater drift, fatigue, compensation, privacy, and appeals.
+* **Red Flag:** Using one unqualified rater per item and treating disagreement as noise to delete.
+
