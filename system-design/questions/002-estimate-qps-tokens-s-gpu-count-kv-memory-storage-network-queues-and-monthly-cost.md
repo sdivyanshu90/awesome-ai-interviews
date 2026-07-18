@@ -1,0 +1,8 @@
+### Q: Estimate QPS, tokens/s, GPU count, KV memory, storage, network, queues, and monthly cost.
+* **Difficulty:** Principal
+* **Category:** Capacity Planning
+* **The 10-Second Pitch:** Model demand as distributions of arrivals, prompt/output lengths, concurrency, and service classes; convert benchmarked per-replica goodput and KV limits into headroom-adjusted capacity, then cost the full pipeline.
+* **The Deep Dive:** Forecast peak and regional QPS with burst factors. Token demand is $lambda*(E[input]+E[output])$, but prefill and decode consume different resources, so retain their distributions and correlations. Benchmark target hardware/runtime at the production mix and SLO; usable goodput, not peak tokens/s, determines replicas: $ceil(peak_work/(replica_goodput*target_utilization))$ plus N+failure/headroom. Apply Little’s Law for concurrency and derive KV bytes using layers, retained tokens, KV heads, head width, dtype, and allocator waste. Size indexes from vectors, metadata, replicas, and rebuild headroom; logs/artifacts from retention and compression. Network includes request/stream, model loading, collectives, KV transfer, and replication. Cost covers GPU/CPU, storage/IO, egress, API tokens, idle/warm capacity, retries, human review, observability, and engineering allocation.
+* **Production Reality & Tradeoffs:** Mean lengths radically understate tails and KV pressure. Benchmark results expire with model/runtime changes. Provide low/base/high scenarios and sensitivity to cache hit, routing, quantization, and failure headroom.
+* **Red Flag:** Dividing vendor peak FLOPs by model FLOPs and calling the result production capacity.
+
