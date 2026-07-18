@@ -1,0 +1,8 @@
+### Q: Design a model-routing gateway by quality, capability, latency, cost, privacy, and availability.
+* **Difficulty:** Principal
+* **Category:** Platform Architecture
+* **The 10-Second Pitch:** Route from explicit task requirements and live constraints using a policy-controlled candidate set, calibrated quality/cost predictions, tenant privacy rules, health, budgets, and observable fallback semantics.
+* **The Deep Dive:** Gateway authenticates tenant, normalizes a provider-neutral request schema, enforces budgets, and classifies task/modality/context/tool needs without exposing unnecessary content. Policy filters models by residency, data-use terms, safety capability, context, modalities, tool schema, and customer allowlist. Router predicts success, TTFT/ITL, marginal cost, and availability from offline replay plus live telemetry, then optimizes under SLO and quality floors; exploration is bounded and logged. Provider adapters translate prompts/tools/stream events and normalize usage/errors. Retries avoid duplicate side effects and use deadline-aware fallback. Cache keys include full semantic bundle/model where equivalence is safe. Every response records chosen route, reason, versions, estimates, actuals, and fallback.
+* **Production Reality & Tradeoffs:** Cross-provider behavior, tokenizers, safety policy, and tool semantics are not interchangeable. Routing classifiers add latency and may leak prompts. Cheaper models can cause more retries. Avoid fallback loops and keep customer-visible quality stable.
+* **Red Flag:** Routing only by price or random provider availability with no compatibility and privacy checks.
+
