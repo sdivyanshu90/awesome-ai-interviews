@@ -1,0 +1,8 @@
+### Q: Apply Little’s Law and queueing intuition to p50/p95/p99, burst traffic, and head-of-line blocking.
+* **Difficulty:** Principal
+* **Category:** Queueing
+* **The 10-Second Pitch:** Little’s Law gives average concurrency $L=lambda W$; it does not predict tails. As utilization approaches one, queue delay explodes, and variable long jobs create head-of-line blocking unless scheduling and admission isolate them.
+* **The Deep Dive:** For a stable boundary, average items in system $L$ equal throughput $lambda$ times average sojourn $W$; apply separately to gateway, prefill, decode, tools, and end-to-end, with consistent units. Capacity planning needs service-time distributions and utilization $rho=lambda E[S]/m$. Queueing tails rise nonlinearly near saturation and worsen with bursty arrivals and high service-time variance. LLM work is size-variable: long prefills can block short prompts, decode sequences retain KV over many iterations, and FIFO couples priority classes. Use bounded queues, token/KV-aware admission, size/priority/deadline scheduling, chunked prefill, separate pools, and fair aging. Measure arrival-to-service queue time distinct from service time. Replay bursts and dependency slowdowns; p99 cannot be inferred from p50 or averaged utilization.
+* **Production Reality & Tradeoffs:** Shortest-job policies improve mean latency but can starve long tasks and require length estimates. Isolation lowers utilization. Autoscaling reacts slower than bursts and cold starts, so headroom/backpressure remain necessary.
+* **Red Flag:** Using $L=lambda W$ to claim p99 latency or running every queue at 95–100% utilization.
+
