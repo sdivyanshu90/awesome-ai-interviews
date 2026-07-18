@@ -1,0 +1,8 @@
+### Q: Evaluate agents for success, trajectory validity, tool correctness, recovery, safety, cost, and latency.
+* **Difficulty:** Principal
+* **Category:** Agent Evaluation
+* **The 10-Second Pitch:** Score terminal outcome and the path separately: valid state transitions, correct authorized tools/arguments, recovery from injected faults, absence of unsafe effects, and resource/SLO compliance.
+* **The Deep Dive:** Define success from environment state, not the agent’s narrative. Record a typed trajectory of observations, plans, tool proposals, policy decisions, calls, results, retries, approvals, and final state. Validate tool selection, schema/argument correctness, authorization, preconditions, idempotency, and whether calls were necessary. Path validity can allow multiple acceptable strategies while prohibiting loops, fabricated observations, or side effects outside scope. Inject timeouts, stale data, partial failures, denied permissions, and ambiguous instructions; measure detection, replanning, rollback/compensation, and escalation. Safety metrics include attempted versus executed violations and containment layer. Report task success conditional on token/tool cost, wall latency, steps, and human interventions.
+* **Production Reality & Tradeoffs:** Deterministic fixtures invite memorized policies; live systems are unsafe and irreproducible. Use versioned simulators plus shadow/replay and a limited canary. A successful outcome reached through unauthorized actions is a failure.
+* **Red Flag:** Grading only the final text response while ignoring tool effects and trajectory.
+
