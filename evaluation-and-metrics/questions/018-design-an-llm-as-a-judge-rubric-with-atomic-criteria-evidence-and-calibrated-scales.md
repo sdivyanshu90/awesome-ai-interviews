@@ -1,0 +1,8 @@
+### Q: Design an LLM-as-a-judge rubric with atomic criteria, evidence, and calibrated scales.
+* **Difficulty:** Senior
+* **Category:** LLM-as-a-Judge
+* **The 10-Second Pitch:** Make each judge decision narrow, evidence-bound, and operationally anchored; separate criteria, require structured rationale/evidence, include abstention, and calibrate thresholds against adjudicated humans.
+* **The Deep Dive:** Start from the product decision and define atomic criteria such as correctness, completeness, instruction following, safety, and style. Avoid one holistic score that lets fluency compensate for factual failure. Give scale anchors with observable distinctions—for example, `0=material contradiction`, `1=unsupported material claim`, `2=minor omission`, `3=fully supported`—and state which errors are gating. Provide source/reference separately from candidate, randomize model identity and order, and require quoted evidence plus structured JSON containing criterion scores, confidence, and abstain/insufficient-evidence. Use deterministic settings where possible, repeated judges only when aggregation is specified, and validate parser failures. Calibrate scores/thresholds on a held-out adjudicated set and measure per-criterion agreement and false-pass rates.
+* **Production Reality & Tradeoffs:** More criteria and evidence increase judge cost and context length. Rationales can sound plausible without being faithful, so grade outputs, not reasoning eloquence. Version judge model, prompt, rubric, and serialization together.
+* **Red Flag:** Prompting “rate this 1–10” with no anchors, evidence, abstention, or human validation.
+
