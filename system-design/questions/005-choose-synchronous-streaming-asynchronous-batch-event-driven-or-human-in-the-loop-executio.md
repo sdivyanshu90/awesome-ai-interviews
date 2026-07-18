@@ -1,0 +1,8 @@
+### Q: Choose synchronous, streaming, asynchronous, batch, event-driven, or human-in-the-loop execution.
+* **Difficulty:** Principal
+* **Category:** Architecture
+* **The 10-Second Pitch:** Choose from user latency, task duration, side effects, ordering, retry semantics, and review risk: streaming improves perception, async/batch absorb long work, events decouple state changes, and humans gate ambiguous high-impact actions.
+* **The Deep Dive:** Synchronous request/response fits short bounded operations and simple failure semantics. Streaming sends partial tokens/events, requiring cancellation, ordering, and moderation of increments; it lowers perceived latency but not completion time. Asynchronous jobs need durable state, status APIs/webhooks, idempotency, leases, retries, and result retention. Batch maximizes throughput for deferrable homogeneous work. Event-driven architecture propagates changes and enables fan-out, but requires schema evolution, deduplication, ordering scopes, replay, and eventual consistency. Human-in-the-loop belongs at high-risk ambiguity or irreversible commit points; approval must bind exact action and expiry. Hybrid designs commonly stream a provisional answer, enqueue deep processing, and request approval only for side effects.
+* **Production Reality & Tradeoffs:** More modes increase state-machine complexity and observability burden. Streaming partials may be retracted; async queues hide latency; human review has capacity and fatigue limits. Pick the simplest mode satisfying the contract.
+* **Red Flag:** Choosing Kafka, streaming, or HITL because it sounds scalable without defining state and failure semantics.
+
