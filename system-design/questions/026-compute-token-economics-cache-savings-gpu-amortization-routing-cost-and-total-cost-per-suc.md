@@ -1,0 +1,8 @@
+### Q: Compute token economics, cache savings, GPU amortization, routing cost, and total cost per successful task.
+* **Difficulty:** Principal
+* **Category:** Economics
+* **The 10-Second Pitch:** Compute expected fully loaded cost over the entire attempt distribution, divide by successful tasks—not requests—and model cache/routing effects with hit correctness, retries, latency, and reserved-capacity utilization.
+* **The Deep Dive:** API cost is input, cached-input, output, image/audio, and tool charges by route. Self-host cost per second includes GPU/CPU reservation or amortization, power, storage, network, orchestration, support, and idle headroom; allocate by measured GPU-seconds, KV occupancy, or token work. Cache savings are $eligible_requests * safe_hit_rate * avoided_marginal_cost - lookup/storage/invalidation/miss_penalty$; raw hit rate overstates value if hits are stale or would use a cheaper route. Routing cost includes classifier/gateway, candidate model, fallback/retry probability, and quality-dependent completion. Agent tasks add loop/tool/human review. $cost_per_success = total_fully_loaded_cost / number_of_tasks_meeting_quality_and_safety_success$, sliced by workload. Model low/base/high traffic, length, utilization, and failure scenarios.
+* **Production Reality & Tradeoffs:** Marginal GPU cost near idle differs from capacity-expansion cost. Output length and retries dominate tails. Cheap models may lower first-attempt cost but raise failure/rework. State assumptions and uncertainty; avoid double-counting shared platform cost.
+* **Red Flag:** Multiplying average tokens by list price and calling it total cost, while ignoring failed tasks, retries, and idle capacity.
+
