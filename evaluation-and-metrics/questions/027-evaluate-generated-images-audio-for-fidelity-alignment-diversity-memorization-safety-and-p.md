@@ -1,0 +1,8 @@
+### Q: Evaluate generated images/audio for fidelity, alignment, diversity, memorization, safety, and preference.
+* **Difficulty:** Principal
+* **Category:** Generative Media Evaluation
+* **The 10-Second Pitch:** Separate distributional fidelity, prompt/condition adherence, coverage, nearest-training-example risk, safety policy, and human preference; no single embedding score measures all six.
+* **The Deep Dive:** For images, FID compares Gaussian moments of features; KID estimates polynomial-kernel MMD and is less biased at small samples. Precision/recall in feature space separates quality from mode coverage. CLIP-like alignment tests prompt-image semantics but misses counting/text/spatial details, so use compositional and detector/OCR-based checks. Audio adds intelligibility, speaker similarity, prosody, artifacts, and MOS with calibrated listening tests. Memorization uses nearest-neighbor search across multiple feature spaces, exact/perceptual hashes, membership canaries, and expert review of suspicious pairs. Safety classifiers plus adversarial prompts cover disallowed content and demographic disparity. Human pairwise preference must randomize order and control resolution/loudness. Evaluate conditional diversity for the same prompt, not only global distribution.
+* **Production Reality & Tradeoffs:** Feature metrics inherit encoder/domain bias and can be gamed. Human studies are expensive and culturally dependent. Privacy tests need controlled access to training data; nearest neighbor alone does not prove copying.
+* **Red Flag:** Claiming lower FID means safer, more aligned, or less memorized generation.
+
