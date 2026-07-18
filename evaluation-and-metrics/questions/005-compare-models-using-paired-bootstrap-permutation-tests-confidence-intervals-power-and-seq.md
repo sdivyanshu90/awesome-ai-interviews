@@ -1,0 +1,8 @@
+### Q: Compare models using paired bootstrap, permutation tests, confidence intervals, power, and sequential tests.
+* **Difficulty:** Principal
+* **Category:** Statistics
+* **The 10-Second Pitch:** Exploit pairing because both models see the same examples, estimate uncertainty for the metric difference, power the experiment for the minimum useful effect, and use sequential methods only with valid stopping boundaries.
+* **The Deep Dive:** Let $d=T(A,D)-T(B,D)$ for metric $T$. A paired bootstrap resamples evaluation units—with clusters such as users/documents kept intact—and recomputes $d$; percentile or BCa intervals quantify sampling uncertainty. A paired randomization/permutation test swaps A/B outcomes within exchangeable units under the null and estimates the tail probability of observed $d$. For binary paired correctness, McNemar focuses on discordant pairs. Confidence intervals answer effect size uncertainty; a p-value does not establish practical importance. Before collection, specify minimum detectable effect, variance, alpha, desired power, multiplicity, and unit of randomization. Repeated peeking inflates false positives; group-sequential boundaries, alpha spending, always-valid confidence sequences, or Bayesian decision rules make stopping explicit.
+* **Production Reality & Tradeoffs:** Bootstrap assumptions fail with nonrepresentative or dependent samples unless resampling matches the hierarchy. Tiny benchmark confidence intervals do not cover distribution shift or label error. Correct for multiple slices/metrics and distinguish confirmatory from exploratory analyses.
+* **Red Flag:** Running independent unpaired tests on paired outputs or declaring equivalence because $p>0.05$.
+
