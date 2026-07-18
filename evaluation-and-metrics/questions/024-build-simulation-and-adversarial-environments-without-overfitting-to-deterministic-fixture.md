@@ -1,0 +1,8 @@
+### Q: Build simulation and adversarial environments without overfitting to deterministic fixtures.
+* **Difficulty:** Principal
+* **Category:** Simulation
+* **The 10-Second Pitch:** Randomize causal factors and hidden state behind stable interfaces, separate scenario generation from evaluation, inject realistic failures/adversaries, and hold out entire environment families rather than seeds.
+* **The Deep Dive:** Model entities, resources, permissions, time, and side effects as a state machine with an oracle over allowed terminal states and invariants. Expose observations/tools through production-compatible schemas while keeping privileged state hidden. Parameterize data, topology, latency, error modes, user behavior, and attacker strategies; use seeded stochasticity for replay. Procedurally generate scenarios from causal templates and validate difficulty/distribution. Train/tune on some templates and hold out novel combinations, tools, schemas, and adversarial families. Metamorphic tests change irrelevant names/order and require invariant behavior. Add fault injection, concurrent actors, delayed effects, and irreversible-action approvals. Detect simulator exploitation by comparing simulator-only shortcuts against shadow traces and periodically replacing fixtures.
+* **Production Reality & Tradeoffs:** Higher fidelity raises cost and can reproduce sensitive data; low fidelity rewards brittle policies. Simulators cannot establish real-world safety alone. Track coverage of state transitions and failure modes, not only scenario count.
+* **Red Flag:** Creating a fixed set of scripted happy paths and calling repeated benchmark success generalization.
+
