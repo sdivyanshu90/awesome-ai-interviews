@@ -1,0 +1,8 @@
+### Q: Evaluate VLMs for OCR, grounding, spatial reasoning, counting, hallucination, and real-camera shift.
+* **Difficulty:** Principal
+* **Category:** Multimodal Evaluation
+* **The 10-Second Pitch:** Use task-specific, evidence-localized metrics and controlled visual counterfactuals; slice by resolution, text size, layout, object density, viewpoint, blur, lighting, and device shift.
+* **The Deep Dive:** OCR needs character/word error plus field-level exactness and reading order. Grounding scores boxes/masks with IoU, point accuracy, and referring-expression resolution. Spatial reasoning uses relation labels and counterfactual flips; counting requires exact/count error by density and occlusion. Hallucination evaluation extracts claims about visible entities/attributes and verifies them against localized annotations, including absent-object negatives. For charts/documents, score table structure, numeric values, units, and evidence cell/region. Real-camera sets vary compression, motion blur, glare, rotation, crop, lens, low light, and culturally/geographically diverse scenes. Pair each image with edits that change one fact, and require answer/citation to change accordingly. Evaluate multiple-image identity and temporal consistency for video.
+* **Production Reality & Tradeoffs:** VLM judges may share visual blind spots with candidates. OCR accuracy can dominate downstream scores, so attribute failures by stage. Respect face/license/privacy and test safety across visual text attacks.
+* **Red Flag:** Using caption similarity as the sole metric for grounding, counting, OCR, and hallucination.
+
