@@ -1,0 +1,8 @@
+### Q: Diagnose offline improvements with declining production satisfaction or business outcomes.
+* **Difficulty:** Principal
+* **Category:** Debugging
+* **The 10-Second Pitch:** Verify metric and experiment integrity, then attribute the gap to population shift, proxy mismatch, system interactions, latency/cost, or behavioral feedback using replay, slices, stage traces, and counterfactual online tests.
+* **The Deep Dive:** First confirm versions, traffic assignment, logging, and significance. Compare offline and online populations by intent, language, tenure, device, context length, and risk. Recompute offline metrics on production replay and online outcomes on benchmark-like cohorts. Inspect whether the model optimized judge-visible verbosity/style while harming task completion, latency, trust, or follow-up burden. Attribute changes across retrieval, prompt, model, tools, safety, and UI using shadow outputs and staged ablations. Check truncation, cache, routing, fallback, and tool failure differences absent offline. Analyze mediation: treatment changes response length, which changes latency, which changes abandonment. Read qualitative complaints and adjudicate discordant cases. Run a focused experiment on the suspected mechanism.
+* **Production Reality & Tradeoffs:** Production outcomes are delayed and confounded by seasonality or concurrent launches. Satisfaction samples have response bias. Do not discard offline evaluation; repair its coverage and construct validity.
+* **Red Flag:** Concluding users are wrong or rolling back solely because one aggregate business metric moved.
+
