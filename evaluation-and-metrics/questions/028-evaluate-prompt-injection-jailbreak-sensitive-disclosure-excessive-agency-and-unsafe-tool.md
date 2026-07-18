@@ -1,0 +1,8 @@
+### Q: Evaluate prompt injection, jailbreak, sensitive disclosure, excessive agency, and unsafe tool use.
+* **Difficulty:** Principal
+* **Category:** Safety Evaluation
+* **The 10-Second Pitch:** Test adversarial content across every trust channel and score attempted versus executed effects, privilege reached, data exposed, and containment—not merely whether the model emitted a refusal.
+* **The Deep Dive:** Build a threat-model-derived taxonomy: direct/indirect/stored/multimodal/tool-result injection; policy jailbreak transformations; secret and cross-tenant extraction; confused deputy; unauthorized tools/arguments; stale approval; denial-of-wallet. Generate adaptive attacks and hold out families. Instrument the full path from ingestion and retrieval through context assembly, proposal, policy, approval, executor, and egress. Label model compliance, proposed capability, deterministic denial, actual side effect, data sensitivity, reversibility, and blast radius. Include benign lookalikes to measure overrefusal. Use canary secrets and sandboxed fake resources, never live credentials. Mutation tests change encoding, language, layout, location, and multi-turn staging. Gate on zero/near-zero severe executed effects with confidence bounds, plus utility floors.
+* **Production Reality & Tradeoffs:** Static jailbreak sets saturate and leak. Attack success depends on tools and privileges, so model-only scores do not transfer. Continuous red teaming and incident replay are required after architecture changes.
+* **Red Flag:** Counting refusals while an injected tool call still executes or sensitive data appears in logs.
+
