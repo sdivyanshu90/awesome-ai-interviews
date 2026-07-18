@@ -1,0 +1,8 @@
+### Q: Evaluate long-context retrieval, instruction retention, distractors, cross-document reasoning, and latency.
+* **Difficulty:** Principal
+* **Category:** Long-Context Evaluation
+* **The 10-Second Pitch:** Vary evidence position, context length, distractor hardness, instruction placement, and required hops independently; verify cited evidence and measure quality jointly with prefill cost, TTFT, and memory.
+* **The Deep Dive:** Construct documents with controlled answer spans and provenance. Sweep context length and evidence position—including middle and boundaries—to expose positional decay. Distractors should progress from lexical overlap to semantically plausible contradictions and instruction-like attacks. Test system/developer/user instruction retention after long content and multiple turns. Cross-document tasks must require combining complementary facts, temporal ordering, or resolving conflicts; label each support hop and score joint retrieval plus reasoning. Include unanswerable cases and require abstention. Counterfactual variants swap the answer while preserving surface form to detect memorization. Report exact/semantic answer, claim entailment, citation-span accuracy, distractor susceptibility, and performance versus effective tokens. Trace tokenization, retrieval, truncation, prefill TTFT, decode latency, KV memory, and cost.
+* **Production Reality & Tradeoffs:** Synthetic needles can be much easier than natural evidence and do not prove reasoning. Longer contexts change batching and tail latency. Test the full context builder because silent truncation/order differs from raw model benchmarks.
+* **Red Flag:** Reporting needle-in-a-haystack accuracy at one length as proof of general long-context capability.
+
