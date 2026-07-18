@@ -1,0 +1,8 @@
+### Q: Diagnose acceptable mean latency but failed p99 under long-context and mixed-priority traffic.
+* **Difficulty:** Principal
+* **Category:** Performance Debugging
+* **The 10-Second Pitch:** Break p99 into queue and service by stage and workload, correlate with context/KV/batch/priority and rank traces, then fix admission, isolation, chunking, fairness, or dependency tails rather than optimizing the mean.
+* **The Deep Dive:** Confirm percentile calculation, window, timeout censoring, and class mix. Trace gateway queue, tokenization, retrieval, prefill, decode ITL, tools, and streaming; join request context/output lengths, tenant/priority, cache hits, worker/rank, batch composition, KV occupancy, preemption, and retries. Long prefills create head-of-line blocking; large retained KV reduces concurrency; low-priority batch can occupy memory even when compute looks free. Inspect per-rank collectives and dependency tail amplification. Reproduce with production joint distributions and bursts. Apply token/KV-aware admission, bounded per-class queues, chunked prefill, decode deadlines/fair aging, separate long/batch pools, cancellation cleanup, capacity headroom, and timeout budgets. Validate goodput and starvation, not p99 alone.
+* **Production Reality & Tradeoffs:** Isolation/headroom lowers utilization, while shortest-job scheduling can starve long users. Autoscaling cannot instantly solve KV-held sessions. Avoid hiding tails by dropping requests from metrics.
+* **Red Flag:** Adding GPUs or optimizing one kernel based on average GPU utilization without locating queueing and workload correlation.
+
