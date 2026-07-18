@@ -1,0 +1,8 @@
+### Q: Design a recommendation/ranking system with retrieval, features, exploration, feedback, and safety.
+* **Difficulty:** Principal
+* **Category:** ML System Design
+* **The 10-Second Pitch:** Use multi-stage candidate generation and ranking with point-in-time-correct features, constrained exploration, debiased feedback, policy filters, and outcome evaluation beyond clicks.
+* **The Deep Dive:** Candidate generators combine collaborative, content/embedding, graph, popularity, and rule sources with quotas for coverage. Feature platform serves consistent offline/online user, item, context, and sequence features under freshness SLOs. A lightweight ranker prunes, then a richer ranker optimizes expected utility; a re-ranker enforces diversity, inventory, fairness, safety, and business constraints. Exploration uses bandits or randomized buckets with propensity logging so counterfactual estimators can correct exposure bias. Feedback distinguishes impression, dwell, conversion, hide/report, satisfaction, and delayed outcomes; train with negative sampling and point-in-time joins to avoid leakage. Cold-start uses content/onboarding and uncertainty. Guardrails prevent harmful content and feedback loops. Online tests randomize at user/account and measure long-term value.
+* **Production Reality & Tradeoffs:** Optimizing click-through amplifies sensationalism and popularity. Exploration has user cost; inverse propensity estimates have high variance. Feature skew and delayed labels are common. Provide reasons/controls and deletion propagation.
+* **Red Flag:** Training on clicks as unbiased relevance labels or using one embedding nearest-neighbor stage as the entire recommender.
+
