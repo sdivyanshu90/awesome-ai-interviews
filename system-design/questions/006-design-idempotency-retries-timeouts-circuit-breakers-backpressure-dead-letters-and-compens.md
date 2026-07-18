@@ -1,0 +1,8 @@
+### Q: Design idempotency, retries, timeouts, circuit breakers, backpressure, dead letters, and compensation.
+* **Difficulty:** Principal
+* **Category:** Reliability
+* **The 10-Second Pitch:** Assume every call can time out after committing: use stable operation IDs, bounded retries with jitter and budgets, stage deadlines, breakers, bounded queues, inspectable dead letters, and domain-specific compensation.
+* **The Deep Dive:** Give each logical operation an idempotency key and store request digest plus terminal result atomically at the side-effect boundary; reject key reuse with different arguments. Propagate an end-to-end deadline and allocate shorter stage timeouts. Retry only transient, safe/idempotent operations with exponential backoff, jitter, maximum attempts, and retry budgets to prevent storms. Circuit breakers stop calls after error/latency thresholds and probe recovery half-open. Backpressure rejects, delays, or degrades before queues/memory exhaust; never allow unbounded buffers. Dead-letter events include failure reason, attempts, versions, and encrypted/redacted payload pointer with replay controls. For irreversible workflows use sagas: explicit prepare/commit and compensating actions, recognizing compensation may not perfectly undo reality.
+* **Production Reality & Tradeoffs:** Exactly-once is usually an application illusion built from deduplication and transactions. Aggressive timeouts cause retries; slow timeouts consume capacity. Breakers can amplify regional shifts, and dead-letter queues require ownership.
+* **Red Flag:** Blindly retrying model/tool calls, especially payments or emails, with no idempotency or global deadline.
+
