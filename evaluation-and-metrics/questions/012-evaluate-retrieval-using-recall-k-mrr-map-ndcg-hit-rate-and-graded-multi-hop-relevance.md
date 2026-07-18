@@ -1,0 +1,8 @@
+### Q: Evaluate retrieval using Recall@k, MRR, MAP, nDCG, hit rate, and graded/multi-hop relevance.
+* **Difficulty:** Senior
+* **Category:** Information Retrieval
+* **The 10-Second Pitch:** Choose a metric matching the user need: set coverage, first relevant rank, precision across relevant items, graded ranking utility, or any-hit success; define the relevance unit and incomplete-judgment treatment first.
+* **The Deep Dive:** Recall@k is retrieved relevant items divided by all known relevant items. Hit rate is the fraction of queries with at least one relevant result. Reciprocal rank is $1/r$ for the first relevant result and MRR averages it. Average precision averages precision at each relevant hit, usually normalized by total relevant items; MAP averages AP across queries. DCG@k sums graded gains such as $(2^rel_i-1)/log2(i+1)$ and nDCG divides by the ideal ordering. Metrics differ when multiple passages, documents, or facts are relevant. Multi-hop questions require coverage of the supporting set, not merely one relevant chunk; report joint support recall and path/order constraints. With incomplete judgments, unjudged does not necessarily mean irrelevant—use pooled judging, bpref-like approaches, or sampled correction.
+* **Production Reality & Tradeoffs:** Chunk-level labels inflate duplicates and can disagree with answer usefulness. Macro query averages hide head/tail and zero-relevant cases. Evaluate filters/ACLs, latency, freshness, and downstream answer delta alongside offline relevance.
+* **Red Flag:** Reporting Recall@k without defining the denominator, relevance granularity, or whether every required hop was retrieved.
+
