@@ -1,0 +1,8 @@
+### Q: Explain RAGAS context precision, context recall, faithfulness, and answer relevance.
+* **Difficulty:** Senior
+* **Category:** RAG Evaluation
+* **The 10-Second Pitch:** RAGAS separates retrieval focus and coverage from generation grounding and responsiveness: useful decomposition, but its LLM-generated claims/questions are noisy estimators that require target-domain validation.
+* **The Deep Dive:** Context precision asks whether higher-ranked retrieved chunks are useful, commonly weighting precision at relevant positions; context recall asks whether reference-answer claims are attributable to retrieved context. Faithfulness decomposes the generated answer into claims and estimates the fraction supported by retrieved context. Answer relevance generates or judges questions implied by the answer and compares them with the original question, penalizing off-topic or incomplete responses. Exact implementations and names vary by library version, so pin metric prompts, judge model, embeddings, claim segmentation, and aggregation. These dimensions localize faults: low recall suggests retrieval/index/query problems; low precision indicates distractors or ranking; low faithfulness points to generation; low relevance can occur despite grounded but nonresponsive text. Create controlled fixtures where one dimension changes at a time.
+* **Production Reality & Tradeoffs:** Reference-free does not mean ground-truth-free: the judge supplies latent labels and may miss domain reasoning. Scores are not comparable across judge/prompt versions. Sample expert audits and report uncertainty, cost, and failure slices.
+* **Red Flag:** Combining all RAGAS dimensions into one score and claiming it proves answer correctness.
+
