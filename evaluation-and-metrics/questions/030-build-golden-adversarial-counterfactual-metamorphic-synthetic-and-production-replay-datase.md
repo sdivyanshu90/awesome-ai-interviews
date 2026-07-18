@@ -1,0 +1,8 @@
+### Q: Build golden, adversarial, counterfactual, metamorphic, synthetic, and production-replay datasets.
+* **Difficulty:** Principal
+* **Category:** Dataset Engineering
+* **The 10-Second Pitch:** Use a portfolio: expert gold for validity, adversarial cases for known failure modes, counterfactual/metamorphic pairs for causal invariants, synthetic data for coverage, and privacy-safe production replay for realism.
+* **The Deep Dive:** Define dataset purpose, unit, population, time range, labels, severity, and owner. Golden sets receive expert evidence-backed labels and adjudication. Adversarial sets derive from threat models and incidents. Counterfactual pairs change one causal factor and specify expected output change; metamorphic tests transform irrelevant form and require invariance. Synthetic generators target sparse combinations but must be validated against real distributions and prevented from leaking answer templates. Production replay samples by workload/slice/severity, redacts or tokenizes identifiers, preserves necessary correlations, and respects retention/consent. Deduplicate across train/tune/test, group related variants, version immutable manifests, and maintain challenge sets hidden from prompt/model tuning.
+* **Production Reality & Tradeoffs:** A huge synthetic set can narrow uncertainty while measuring the wrong distribution. Golden sets become stale; replay can encode historical harm and sensitive data. Track provenance, label confidence, coverage, and refresh triggers.
+* **Red Flag:** Mixing generated variants of the same seed across train and test or calling synthetic judge labels ground truth.
+
