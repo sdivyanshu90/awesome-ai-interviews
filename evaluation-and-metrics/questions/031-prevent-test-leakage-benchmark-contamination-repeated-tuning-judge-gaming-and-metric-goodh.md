@@ -1,0 +1,8 @@
+### Q: Prevent test leakage, benchmark contamination, repeated tuning, judge gaming, and metric Goodharting.
+* **Difficulty:** Principal
+* **Category:** Evaluation Integrity
+* **The 10-Second Pitch:** Separate development and decision sets, control access and provenance, detect overlap, limit repeated adaptive queries, rotate hidden challenges, and use multi-metric human-audited gates tied to real outcomes.
+* **The Deep Dive:** Hash and lineage every item/source; run exact, near-duplicate, semantic, and code-AST overlap checks against training/tuning corpora where available. Keep public examples for development, a restricted validation set for iteration, and hidden time-separated holdouts for release. Group variants by source before splitting. Log every evaluation and prevent teams from repeatedly tuning against the final set; use fresh confirmation sets after material adaptation. Canary strings and temporal knowledge detect contamination. Judge gaming tests verbosity, format, copied references, and adversarial evaluator prompts. Avoid optimizing a single proxy: define capability, safety, cost, latency, and human outcome constraints plus perturbation tests. Rotate subsets without breaking longitudinal anchors.
+* **Production Reality & Tradeoffs:** Perfect contamination detection is impossible for pretrained models. Hidden tests reduce transparency and can create governance bottlenecks. Report suspected exposure and distinguish benchmark progress from generalization.
+* **Red Flag:** Assuming a high score is valid because the benchmark file was not explicitly included in fine-tuning.
+
