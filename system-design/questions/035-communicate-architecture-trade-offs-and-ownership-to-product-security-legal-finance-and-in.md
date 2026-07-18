@@ -1,0 +1,8 @@
+### Q: Communicate architecture trade-offs and ownership to product, security, legal, finance, and infrastructure.
+* **Difficulty:** Principal
+* **Category:** Leadership
+* **The 10-Second Pitch:** Present the decision, user outcome, constraints, quantified options, residual risks, owners, and reversible next step in each stakeholder’s language while keeping one shared source of truth.
+* **The Deep Dive:** Use a concise decision record: problem/scope, assumptions, functional and SLO targets, threat/risk classification, workload/cost model, options with Pareto trade-offs, chosen design, rejected alternatives, uncertainty, validation plan, rollback, and review date. Product sees task success and UX/degraded behavior; security sees trust boundaries, capabilities, abuse cases, and residual risk; legal/privacy sees purpose, data flow, residency, retention, rights, and human accountability; finance sees scenario-based fully loaded cost per successful task and commitments; infrastructure sees capacity, topology, dependencies, SLO/error budget, rollout, and on-call. RACI assigns accountable service/data/model/policy/incident owners. Architecture diagrams show flows and boundaries; dashboards and gates map claims to evidence. Record disagreements and who accepts residual risk.
+* **Production Reality & Tradeoffs:** Too much detail obscures decisions; oversimplification hides risk. Tailor views without changing facts. Update documents after incidents and material changes, or ownership becomes ceremonial.
+* **Red Flag:** Using model jargon and a polished diagram while leaving cost assumptions, residual risk, rollback, and accountable owners undefined.
+
