@@ -1,0 +1,8 @@
+### Q: Conduct a production-readiness review covering capability, safety, operations, governance, and rollback.
+* **Difficulty:** Principal
+* **Category:** Production Readiness
+* **The 10-Second Pitch:** Require evidence, owners, and tested controls across requirements, evaluation, threat model, SLO/capacity, observability, incident response, data/model governance, deployment, degradation, and rollback—not a checklist of intentions.
+* **The Deep Dive:** Review functional scope and prohibited uses; offline/online evaluation with slices, uncertainty, adversarial tests, and human validation; model/data limitations and known residual risks. Security covers identity, tenant isolation, prompt injection, tool authorization, secrets, egress, supply chain, logging, and red-team closure. Operations covers demand/load tests, p99, quotas, autoscaling/cold start, dependencies, dashboards, burn alerts, on-call/runbooks, backups, deletion, and disaster recovery. Governance captures lineage, licenses/consent, privacy/residency, model/data cards, approvals, change management, incident reporting, and accountable owner. Deployment evidence includes immutable artifacts, canary/shadow, compatibility, kill switch, tested degraded modes and rollback including state/schema/index. Every exception has risk owner, compensating control, expiry, and follow-up.
+* **Production Reality & Tradeoffs:** A review snapshot decays; tie re-review to material model/data/tool/policy/provider changes and incidents. Excess bureaucracy encourages rubber stamping, so focus on high-severity evidence and automated controls.
+* **Red Flag:** Approving launch because benchmark means improved while no one owns incidents, deletion, or rollback.
+
