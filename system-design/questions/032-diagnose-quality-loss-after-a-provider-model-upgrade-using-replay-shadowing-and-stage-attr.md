@@ -1,0 +1,8 @@
+### Q: Diagnose quality loss after a provider/model upgrade using replay, shadowing, and stage attribution.
+* **Difficulty:** Principal
+* **Category:** Debugging
+* **The 10-Second Pitch:** Freeze old/new complete bundles, replay identical production cases, shadow safely, classify discordant failures, and attribute changes across serialization, retrieval, model, tools, policy, and postprocessing before tuning.
+* **The Deep Dive:** Verify traffic, aliases, versions, and logging first. A model upgrade often changes tokenizer, chat template, tool schema interpretation, safety behavior, max context, sampling defaults, or truncation. Build paired replay from privacy-safe production traces with exact old inputs and dependency snapshots where possible. Run old and new bundles, not weights alone, and compute paired task/slice deltas with bootstrap. Shadow live requests without side effects and compare latency/errors/output/tool proposals. For discordant cases swap one stage at a time: tokenizer/template, context builder/retrieval, model, decoder, policy, tool parser, postprocessor. Inspect length, refusal, citation, tool, language, and long-context slices. Use causal ablations, then canary the fix and retain rollback.
+* **Production Reality & Tradeoffs:** External providers may be nondeterministic and old versions unavailable; archive responses/metadata. Shadowing can violate data agreements. Do not tune to a handful of anecdotes or conceal safety gains behind aggregate quality loss.
+* **Red Flag:** Blaming “model drift” and editing the prompt before confirming exact bundle and stage differences.
+
