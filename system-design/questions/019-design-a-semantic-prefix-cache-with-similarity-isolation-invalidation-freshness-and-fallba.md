@@ -1,0 +1,8 @@
+### Q: Design a semantic/prefix cache with similarity, isolation, invalidation, freshness, and fallbacks.
+* **Difficulty:** Principal
+* **Category:** Caching
+* **The 10-Second Pitch:** Use exact prefix KV reuse only under identical execution state and semantic response caching only for explicitly cacheable tasks, with tenant/policy scope, freshness metadata, conservative thresholds, and normal-execution fallback.
+* **The Deep Dive:** Prefix cache keys token IDs plus model/weights, adapter, position encoding, prompt/template, multimodal inputs, KV dtype/layout, and policy domain; reuse immutable full blocks with refcounts. Semantic cache embeds a normalized query and retrieves candidates, then applies tenant/ACL, task, locale, time, tool/state, and policy compatibility before a threshold or verifier. Store response, evidence/source versions, creation/expiry, generator bundle, and safety decision. Event-driven invalidation follows source/model/prompt/policy changes; TTL bounds missed events. Do not cache personalized, high-stakes, nondeterministic side-effect, or freshness-critical answers unless a stronger key captures state. On miss/uncertainty execute normally; on stale dependency fail according to product contract.
+* **Production Reality & Tradeoffs:** Loose semantic thresholds return confidently wrong answers; strict thresholds erase hits. Embedding/model migrations require dual read/write or flush. Cache-hit timing and shared entries can leak tenant information. Measure safe hit rate and avoided cost, not raw hits.
+* **Red Flag:** Keying by prompt text or embedding similarity alone while ignoring tenant, model, source versions, and time.
+
