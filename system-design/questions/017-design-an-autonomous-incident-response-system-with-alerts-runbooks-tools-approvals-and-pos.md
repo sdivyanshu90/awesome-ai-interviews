@@ -1,0 +1,8 @@
+### Q: Design an autonomous incident-response system with alerts, runbooks, tools, approvals, and postmortems.
+* **Difficulty:** Principal
+* **Category:** Agent System Design
+* **The 10-Second Pitch:** Let the agent correlate evidence and propose bounded runbook steps, but enforce least privilege, typed tools, exact approvals, idempotent execution, kill switches, and a durable incident timeline.
+* **The Deep Dive:** Ingest alerts, topology, recent changes, logs/metrics/traces, and service ownership into a deduplicated incident graph. A planner selects a versioned runbook and gathers read-only evidence first. Every observation preserves query/time/source. Tool registry separates read, reversible mitigation, and irreversible actions with scoped resources. Policy checks incident role, blast radius, maintenance state, change freeze, and preconditions; risky actions render a diff and approval digest. Executor uses JIT credentials, idempotency, canaries, rate limits, verification, and automatic rollback/compensation. State machine records hypothesis, evidence, proposal, approval, execution, result, and handoff. The agent must stop on uncertainty, policy outage, conflicting evidence, or expanding blast radius. Generate a draft postmortem from the immutable timeline, with humans owning causal conclusions.
+* **Production Reality & Tradeoffs:** Automation shortens mitigation but can amplify correlated failures. Simulations miss real dependency behavior. Start read-only, then reversible narrow actions, and measure containment errors, MTTA/MTTR, and operator override.
+* **Red Flag:** Giving an LLM cluster-admin credentials and treating a plausible explanation as incident diagnosis.
+
