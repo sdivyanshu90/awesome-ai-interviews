@@ -1,0 +1,8 @@
+### Q: Secure identity, secrets, network, tenant boundaries, data residency, logging, models, and dependencies.
+* **Difficulty:** Principal
+* **Category:** Security Architecture
+* **The 10-Second Pitch:** Anchor every operation to a principal and tenant, issue short-lived scoped capabilities, isolate data/cache/compute, restrict egress, enforce residency, minimize logs, and verify signed model/software supply chains.
+* **The Deep Dive:** Gateway authenticates human/service/workload identity and propagates signed principal/tenant/purpose claims; authorization is checked at retrieval, tools, data, and side-effect resources—not delegated to the model. Secrets broker exchanges workload identity for JIT credentials with resource/action/expiry scope and central revocation. Segment control/data planes and tenants, default-deny egress, sandbox untrusted parsers/code/models, and encrypt with tenant/region-aware keys. Residency applies to prompts, derived embeddings, caches, backups, telemetry, support access, and failover. Logging records decisions and versions but redacts/tokenizes sensitive payloads with access/retention. Weights, adapters, datasets, containers, packages, and plugins use hashes, signatures, provenance, SBOMs, scanning, pinning, and isolated loading. Test cross-tenant cache/index/adapter leakage.
+* **Production Reality & Tradeoffs:** Strong isolation raises cost and reduces cache sharing. Logs needed for incidents conflict with minimization. Supply-chain scanning cannot prove benign behavior; runtime sandbox and monitoring remain necessary. Threat model every new connector/tool.
+* **Red Flag:** Putting secrets in system prompts or relying on output filters to prevent unauthorized data/tool access.
+
