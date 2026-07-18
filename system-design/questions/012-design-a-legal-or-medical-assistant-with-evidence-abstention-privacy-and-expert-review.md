@@ -1,0 +1,8 @@
+### Q: Design a legal or medical assistant with evidence, abstention, privacy, and expert review.
+* **Difficulty:** Principal
+* **Category:** High-Stakes AI
+* **The 10-Second Pitch:** Constrain scope, retrieve authoritative time/jurisdiction-specific evidence, verify every material claim, abstain under uncertainty, protect regulated data, and keep accountable experts at decision and communication boundaries.
+* **The Deep Dive:** Define whether the system searches, summarizes, drafts, or recommends; prohibit unsupported diagnosis/legal determination where inappropriate. Authenticate role and purpose, minimize input, enforce residency/retention, and separate tenants/cases. Curate authoritative sources with jurisdiction, effective date, guideline version, and conflict metadata. Retrieval prioritizes authority and freshness; generated atomic claims cite exact spans and a verifier checks entailment, numeric units, contraindications/exceptions, and missing evidence. Confidence is based on evidence coverage and known limitations, not model self-report. Risk rules trigger abstention or expert review; urgent medical symptoms and legal deadlines follow deterministic escalation. Experts see originals, provenance, uncertainty, and change diff and own final sign-off. Audit access, model/prompt/index/policy versions, evidence, and edits.
+* **Production Reality & Tradeoffs:** Evidence can conflict and change; evaluation requires domain experts and severe-error weighting. More review reduces scale but is not optional for high-impact decisions. Avoid retaining sensitive prompts in generic telemetry.
+* **Red Flag:** Adding a disclaimer while allowing uncited model recommendations to drive treatment or legal action.
+
