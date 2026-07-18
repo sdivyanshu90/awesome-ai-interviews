@@ -1,0 +1,8 @@
+### Q: Turn an ambiguous AI product request into functional requirements, SLOs, risks, and evaluation criteria.
+* **Difficulty:** Senior
+* **Category:** Requirements
+* **The 10-Second Pitch:** Translate the request into users, jobs, decisions, data, effects, constraints, and failure costs; make quality and operating targets measurable before choosing a model or architecture.
+* **The Deep Dive:** Ask who the principal and affected users are, what task/state change defines success, what evidence is available, and which actions are reversible. Enumerate functional paths, out-of-scope behavior, modalities, languages, traffic, freshness, memory, tools, human escalation, and deletion. Convert “fast” into TTFT/ITL/end-to-end percentiles by workload; “accurate” into task-, slice-, and severity-specific metrics; “secure” into identity, authorization, isolation, and retention invariants. Establish availability, recovery, cost, and compliance constraints. Threat-model data, prompt injection, unsafe agency, privacy, overreliance, and supply chain. Define offline gold/adversarial/replay sets, online outcomes, release gates, owners, and degraded modes. Only then compare RAG, fine-tuning, tools, models, and build/buy options.
+* **Production Reality & Tradeoffs:** Requirements evolve, but unbounded ambiguity becomes untestable architecture. Record assumptions and ranges, identify one-way-door decisions, and prototype the highest-risk unknowns. Avoid fake precision before workload measurement.
+* **Red Flag:** Starting with “use a vector database and the largest model” before defining users, success, side effects, or SLOs.
+
