@@ -1,0 +1,8 @@
+### Q: Evaluate summarization for factuality, coverage, compression, style, and citation support.
+* **Difficulty:** Senior
+* **Category:** Evaluation
+* **The 10-Second Pitch:** Decompose summary quality into atomic claims and source obligations: entailment/factuality, salient coverage, nonredundant compression, requested style, and citations that support the exact spans.
+* **The Deep Dive:** Create a source-grounded rubric and annotate atomic claims. For each claim label entailed, contradicted, unsupported, or unverifiable; weight material claims more heavily. Coverage evaluates whether a defined set of salient source facts appears, so salience labels must be independent of the candidate. Compression is source length divided by summary length, paired with redundancy and information density rather than rewarded alone. Style tests structure, audience, tone, length, and forbidden content as separate criteria. Citation completeness asks whether claims needing support cite; correctness asks whether cited evidence entails the claim; span accuracy checks whether the cited passage is the minimal relevant evidence. Use perturbations—swap entities/numbers, delete a salient sentence, attach a wrong citation—to verify metric sensitivity.
+* **Production Reality & Tradeoffs:** Reference summaries are not exhaustive and may themselves contain errors. LLM judges often reward fluency/verbosity, so blind them to model identity, require quoted evidence, and validate against experts. Evaluate long documents by section and claim severity.
+* **Red Flag:** Using ROUGE as a proxy for factual consistency or accepting any citation to the source document as grounded.
+
