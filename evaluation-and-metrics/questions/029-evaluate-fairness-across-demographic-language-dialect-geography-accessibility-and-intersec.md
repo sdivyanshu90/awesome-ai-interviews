@@ -1,0 +1,8 @@
+### Q: Evaluate fairness across demographic, language, dialect, geography, accessibility, and intersectional slices.
+* **Difficulty:** Principal
+* **Category:** Fairness Evaluation
+* **The 10-Second Pitch:** Define the relevant harm and affected populations with stakeholders, measure outcome and error disparities with uncertainty, test intersections and counterfactuals, and avoid inferring sensitive attributes casually.
+* **The Deep Dive:** Fairness is task-specific: allocation may require selection/utility analysis; classification needs FPR/FNR, calibration, and coverage; generation needs representation, toxicity, stereotyping, dialect quality, and refusal disparity. Build consented, governed labels or carefully designed proxies with documented limitations. Report support and confidence intervals for demographic, language, dialect, geography, disability/accessibility, and intersections; hierarchical estimates can stabilize but must not erase small-group harm. Counterfactual pairs change only identity terms where semantically valid. Test assistive inputs such as screen-reader structure, dysarthric speech, captions, low bandwidth, and alternative scripts. Examine annotator disagreement and measurement bias. Set remediation based on severity and legal/product context, not one universal parity criterion.
+* **Production Reality & Tradeoffs:** Metrics such as equalized odds and calibration can be mutually incompatible under different base rates. Small samples and missing labels create uncertainty; privacy constraints limit collection. Engage impacted experts and monitor after deployment.
+* **Red Flag:** Publishing one gender parity number and declaring the system fair.
+
