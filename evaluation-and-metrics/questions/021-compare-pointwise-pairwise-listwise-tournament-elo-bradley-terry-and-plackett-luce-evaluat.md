@@ -1,0 +1,7 @@
+### Q: Compare pointwise, pairwise, listwise, tournament, Elo, Bradley–Terry, and Plackett–Luce evaluation.
+* **Difficulty:** Senior
+* **Category:** Preference Modeling
+* **The 10-Second Pitch:** Pointwise ratings are parallel but poorly calibrated; pairwise choices are easier and feed Bradley–Terry/Elo; listwise rankings expose more information but raise cognitive load, while tournament design controls comparison cost and connectivity.
+* **The Deep Dive:** Pointwise assigns an absolute rubric score and suffers rater-scale drift. Pairwise chooses A/B/tie and often yields higher consistency. Bradley–Terry uses $P(i\succ j)=\sigma(s_i-s_j)$ and estimates latent strengths from a connected comparison graph. Elo is an online stochastic approximation whose result depends on update order and K-factor; it is not automatically uncertainty-aware. Plackett–Luce models a ranking as sequential choices proportional to $\exp(s_i)$. Listwise judgments add context but introduce position and attention effects. Round-robin, Swiss, knockout, and adaptive tournaments trade comparisons, transitivity assumptions, and coverage. Include ties and cluster repeated prompts.
+* **Production Reality & Tradeoffs:** Ratings are population/task specific and can be nontransitive. Sparse disconnected comparison graphs make strengths unidentified. Publish uncertainty and sensitivity to sampling/pairing; avoid treating a tiny Elo gap as meaningful.
+* **Red Flag:** Using Elo as ground truth without controlling order, prompt mix, ties, or confidence intervals.
