@@ -1,0 +1,8 @@
+### Q: Design graceful degradation when retrieval, tools, policy, model providers, GPUs, or regions fail.
+* **Difficulty:** Principal
+* **Category:** Reliability
+* **The 10-Second Pitch:** Define dependency-specific safe modes in advance: stale-but-labeled/cached evidence, read-only behavior, smaller compatible models, async queues, human handoff, or abstention—never silently bypass authorization or safety.
+* **The Deep Dive:** Map dependencies, failure detection, blast radius, and whether absence affects quality, security, or both. Retrieval timeout may fall back to a verified cache with freshness label or respond that evidence is unavailable; it must not fabricate. Tool failure keeps the action uncommitted, retries idempotently within deadline, or queues/handoffs. Policy/authorization failure defaults to no side effect. Provider/GPU loss routes only to a model bundle satisfying capability/privacy/tool compatibility; otherwise reduce features or go async. Regional failure respects residency and reserved failover capacity. Circuit breakers, bounded queues, backpressure, and load shedding prevent cascades. Response schema exposes degraded status where useful. Run game days and verify recovery, cache invalidation, state reconciliation, and customer communication.
+* **Production Reality & Tradeoffs:** Degraded modes need independent evaluation and can become the normal path during long incidents. Redundancy adds cost and common dependencies can defeat it. Security invariants do not consume error budget.
+* **Red Flag:** Failing open around policy or returning an ungrounded answer without telling the user when retrieval fails.
+
