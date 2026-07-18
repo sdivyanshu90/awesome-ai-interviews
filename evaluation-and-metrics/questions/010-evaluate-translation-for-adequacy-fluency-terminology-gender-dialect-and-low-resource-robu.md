@@ -1,0 +1,8 @@
+### Q: Evaluate translation for adequacy, fluency, terminology, gender, dialect, and low-resource robustness.
+* **Difficulty:** Senior
+* **Category:** Evaluation
+* **The 10-Second Pitch:** Measure whether meaning and required terminology survive independently from target-language fluency, then slice by linguistic phenomena, dialect, gender, domain, and resource level with native expert review.
+* **The Deep Dive:** Adequacy checks preservation of propositions, entities, numbers, negation, modality, and relations; fluency checks target grammar and naturalness. Build terminology constraints from domain glossaries and score exact/inflected correct usage plus consistency across documents. Evaluate ambiguous gender with context-required and context-absent sets; penalize unsupported gender insertion separately from mistranslation. Dialect and locale evaluation covers vocabulary, morphology, scripts, formality, and code-switching. Use chrF/BLEU with reproducible signatures, semantic learned metrics validated for the language pair, contrastive challenge sets, round-trip only as a diagnostic, and blinded bilingual human error annotation such as severity-weighted MQM categories. Include zero/few-shot languages and noisy real inputs.
+* **Production Reality & Tradeoffs:** Automatic metrics are weakest exactly where references and training data are scarce. A fluent translation can reverse meaning. Human pools need native dialect/domain expertise and adjudication. Report performance by direction because X-to-English and English-to-X differ.
+* **Red Flag:** Using back-translation or one aggregate BLEU score as evidence of correctness across languages.
+
