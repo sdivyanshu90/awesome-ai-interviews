@@ -1,0 +1,8 @@
+### Q: Distinguish hallucination, unsupported claim, contradiction, stale fact, citation error, and omission.
+* **Difficulty:** Principal
+* **Category:** Taxonomy
+* **The 10-Second Pitch:** Classify failure against the evidence and time contract: unsupported lacks evidence, contradiction conflicts with it, stale was once valid, citation error misattributes support, and omission leaves required information absent.
+* **The Deep Dive:** Define atomic claims and the evidence universe. A hallucination is an umbrella generation failure, not a precise label. Unsupported means available evidence neither entails nor refutes the claim; contradiction means evidence entails its negation or an incompatible value. A stale fact conflicts with the valid-as-of time even if it was historically correct. Citation errors split into missing citation, wrong source, non-entailing source, low-quality source, and inaccurate cited span. Omission is recall failure relative to an explicit information obligation and cannot be detected by scoring only generated claims. Also separate source conflict, unverifiable claim, reasoning error from supported premises, and retrieval miss where supporting evidence exists in the corpus but not context. Label severity and causal stage independently.
+* **Production Reality & Tradeoffs:** Evidence is often incomplete and time-dependent, so force an unknown/conflict state rather than labeling every non-entailment hallucination. Error taxonomy should drive remediation: retrieval, freshness, generation, citation mapping, or coverage.
+* **Red Flag:** Calling every wrong or missing answer a hallucination, which destroys diagnostic value.
+
