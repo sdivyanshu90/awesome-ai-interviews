@@ -1,0 +1,8 @@
+### Q: Construct a scorecard balancing capability, reliability, safety, latency, cost, and environmental impact.
+* **Difficulty:** Principal
+* **Category:** Decision Framework
+* **The 10-Second Pitch:** Use constraints and Pareto trade-offs rather than an arbitrary weighted average: define must-pass safety/reliability gates, workload-specific capability, SLO distributions, cost per successful task, and measured resource/energy impact.
+* **The Deep Dive:** Start from use cases and harm severity. Define hard gates such as no unauthorized high-impact actions, privacy invariants, minimum availability, and bounded p99. Capability metrics are task/slice specific with uncertainty. Reliability covers calibration, abstention, drift, recovery, and failure rate. Performance reports TTFT/ITL/end-to-end percentiles at workload mix; economics reports marginal and fully loaded cost per successful task, including retries and human review. Environmental reporting should use measured energy when possible, hardware utilization, location/time carbon intensity, embodied allocation assumptions, and uncertainty—tokens alone are not emissions. Present Pareto frontiers and lexicographic priorities; weighted summaries may be secondary and must expose weights. Assign owners and release/monitoring thresholds.
+* **Production Reality & Tradeoffs:** Scorecards invite Goodharting and false precision. Metrics have different units, sampling errors, and stakeholder impacts. Keep raw dimensions and qualitative severe risks visible; update weights only through governed decisions.
+* **Red Flag:** Collapsing safety, quality, and cost into one opaque number where excellent fluency can offset a critical security failure.
+
