@@ -1,0 +1,8 @@
+### Q: Validate judges using agreement, correlation, calibration, perturbation, and adjudicated human sets.
+* **Difficulty:** Principal
+* **Category:** Metric Validation
+* **The 10-Second Pitch:** A usable judge must reproduce expert decisions, rank systems, calibrate its pass probabilities, react correctly to injected defects, and remain stable across irrelevant transformations and slices.
+* **The Deep Dive:** Build a hidden set with independent qualified labels, disagreement, and expert adjudication. For nominal/ordinal decisions report confusion matrices, classwise precision/recall, Cohen/Fleiss kappa or Krippendorff alpha as appropriate; for continuous scores report Spearman, Kendall, and error, recognizing correlation ignores offsets and thresholds. Calibrate judge confidence or score to empirical correctness and measure false-pass rates at release gates. Run controlled perturbations that insert factual, safety, citation, and instruction failures of graded severity, plus invariance transformations such as order and formatting. Bootstrap by underlying task/user, not individual duplicated outputs. Compare performance across domains, languages, lengths, model families, and time. Predefine acceptance criteria and keep validation data out of judge prompt tuning.
+* **Production Reality & Tradeoffs:** Human agreement bounds achievable judge agreement but is not permission to ignore severe false passes. Aggregate correlations can hide subgroup collapse. Judge validation expires after model, rubric, context, or candidate-distribution change.
+* **Red Flag:** Reporting only Pearson correlation on the same examples used to tune the judge prompt.
+
