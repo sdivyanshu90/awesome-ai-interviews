@@ -1,0 +1,8 @@
+### Q: Decide between API, self-hosting, open weights, distillation, quantization, or a smaller specialist model.
+* **Difficulty:** Principal
+* **Category:** Strategy
+* **The 10-Second Pitch:** Evaluate candidates at matched task success, safety, SLO, privacy, control, and total volume; choose the least operational complexity meeting constraints, with a migration path and sensitivity analysis.
+* **The Deep Dive:** Build a workload/evaluation suite and demand model. APIs offer rapid access, elastic capacity, and managed operations but create provider, residency, customization, observability, and price risks. Self-host/open weights provide control, data boundary, stable artifacts, and deep optimization but require GPU supply, serving/SRE, security patching, licensing, and utilization. Distillation trains a smaller model on teacher behavior/data and needs rights plus evaluation of lost tails/safety. Quantization reduces memory/bandwidth only when hardware kernels support it and quality holds. A specialist model may beat a general model on narrow stable tasks but needs routing and drift management. Compare fully loaded cost per successful task at volume scenarios, including engineering and failure headroom. Shadow/canary the top candidates and define exit strategy.
+* **Production Reality & Tradeoffs:** Break-even moves with prices, model releases, utilization, and regulation. Hybrid routing often wins but adds complexity. “Open” licenses and data-use terms vary. Avoid irreversible coupling to proprietary prompts/tool semantics.
+* **Red Flag:** Choosing self-hosting solely because per-token arithmetic looks cheaper or an API solely because there is no initial infrastructure cost.
+
