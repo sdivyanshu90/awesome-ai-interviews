@@ -1,0 +1,8 @@
+### Q: Compare ROUGE-N, ROUGE-L, METEOR, chrF, CIDEr, BERTScore, and learned metrics.
+* **Difficulty:** Senior
+* **Category:** NLP Metrics
+* **The 10-Second Pitch:** These metrics move from surface overlap to semantic models, but each embeds a task-specific bias: recall, sequence order, morphology, consensus references, embedding similarity, or learned human preference.
+* **The Deep Dive:** ROUGE-N commonly measures reference n-gram recall; ROUGE-L uses longest common subsequence and rewards in-order overlap without requiring adjacency. METEOR aligns tokens using exact, stem, synonym, and paraphrase matches, combines precision/recall, and penalizes fragmented alignment. chrF computes character n-gram F-scores and handles morphology/tokenization better than word metrics. CIDEr TF-IDF-weights n-grams and rewards consensus across image-caption references. BERTScore greedily matches contextual token embeddings, optionally IDF-weighted, and reports precision/recall/F1. Learned metrics train regressors or evaluators on human judgments and may use source, candidate, and reference. For every metric specify preprocessing, model checkpoint, layer, baseline rescaling, language, and aggregation.
+* **Production Reality & Tradeoffs:** Embedding and learned metrics can inherit model bias, contamination, domain mismatch, and adversarial sensitivity; surface metrics can reward copied but false text. Validate correlation and failure sensitivity on the target task rather than picking the metric with the highest published correlation.
+* **Red Flag:** Treating higher semantic-metric scores as proof of factuality or using ROUGE alone for abstractive summarization.
+
