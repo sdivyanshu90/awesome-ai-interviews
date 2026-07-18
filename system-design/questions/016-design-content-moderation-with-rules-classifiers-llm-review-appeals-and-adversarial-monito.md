@@ -1,0 +1,8 @@
+### Q: Design content moderation with rules, classifiers, LLM review, appeals, and adversarial monitoring.
+* **Difficulty:** Principal
+* **Category:** Safety System Design
+* **The 10-Second Pitch:** Build a severity- and context-aware cascade: deterministic rules for known invariants, calibrated classifiers for scale, LLM review for nuanced cases, human escalation for high impact, and a first-class appeal/audit loop.
+* **The Deep Dive:** Define policy ontology by content/action/severity and distinguish detect, allow, limit, label, remove, and escalate. Normalize inputs safely and handle text/image/audio/video with provenance. High-precision hashes/rules catch known illegal or platform-specific content; specialized classifiers produce calibrated scores; an LLM may synthesize context under a strict evidence rubric but cannot alone authorize severe enforcement. Decision engine combines scores, user/context, jurisdiction, history, and uncertainty with versioned rules. Borderline/high-impact decisions reach trained reviewers; appeals are blinded from the original reviewer where possible and corrections propagate to labels/policy audits. Adversarial monitoring uses transformed attacks, novel clusters, incident replay, and benign counterexamples. Log decision reasons and policy/model versions with privacy controls.
+* **Production Reality & Tradeoffs:** False positives suppress legitimate speech; false negatives cause harm. Language/dialect drift and coordinated attacks require continuous evaluation. Human review has trauma/privacy costs and needs safeguards. Never silently change thresholds without impact analysis.
+* **Red Flag:** Using one toxicity score and a universal threshold for every language, context, and enforcement action.
+
