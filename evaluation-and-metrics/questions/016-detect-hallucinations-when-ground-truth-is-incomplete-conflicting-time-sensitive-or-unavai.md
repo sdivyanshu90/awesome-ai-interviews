@@ -1,0 +1,8 @@
+### Q: Detect hallucinations when ground truth is incomplete, conflicting, time-sensitive, or unavailable.
+* **Difficulty:** Principal
+* **Category:** Hallucination Evaluation
+* **The 10-Second Pitch:** Use evidence-bounded claim verification with provenance and temporal validity, allow unknown/conflict labels, triangulate sources and tools, and calibrate automated detectors on expert-reviewed high-risk claims.
+* **The Deep Dive:** Split the response into atomic, externally checkable claims and preserve qualifiers. Retrieve evidence from authority-ranked sources under an explicit `as_of` timestamp, then label each claim entailed, contradicted, unsupported, conflicting, or not checkable. For volatile facts call trusted APIs or databases and store query/version provenance. When sources conflict, represent disagreement and authority rather than forcing majority truth. Self-consistency can surface uncertainty but is not verification because correlated samples share model errors. Use natural-language inference, search, knowledge graphs, and LLM judges as candidate generators; require quoted evidence and validate them on perturbations. Weight claims by materiality and exposure. For no-reference creative tasks, test internal consistency, constraint satisfaction, and prohibited factual invention rather than external truth.
+* **Production Reality & Tradeoffs:** Open-world verification has irreducible unknowns and retrieval bias. Automated search can introduce prompt injection or stale evidence. Human review should target high-impact/low-confidence claims, and the product should abstain or expose uncertainty where verification is unavailable.
+* **Red Flag:** Using the model’s own confidence or repeated agreement as proof that a claim is true.
+
