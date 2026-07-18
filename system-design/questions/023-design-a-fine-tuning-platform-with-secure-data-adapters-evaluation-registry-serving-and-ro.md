@@ -1,0 +1,8 @@
+### Q: Design a fine-tuning platform with secure data, adapters, evaluation, registry, serving, and rollback.
+* **Difficulty:** Principal
+* **Category:** ML Platform
+* **The 10-Second Pitch:** Use tenant-isolated governed datasets, reproducible training jobs, signed lineage-rich model/adapter artifacts, automatic safety/capability evaluation, compatibility-aware serving, and immutable rollback.
+* **The Deep Dive:** Control plane accepts dataset manifest, base-model digest, tuning method/hyperparameters, code/container, compute policy, and evaluation suite. Data plane runs in isolated network/storage identity, decrypts data just in time, prevents cross-tenant cache/checkpoint reuse, and captures metrics/checkpoints with retention. Validate licenses/PII/poisoning and hold out deduplicated eval. Registry records base dependency, tokenizer/template, adapter architecture/rank, quantization, framework, data lineage, evaluations, approvals, and signature. Serving loads adapters only into compatible base/runtime pools, enforces tenant quotas and cache isolation, warms, shadows/canaries, and monitors quality/drift. Rollback changes immutable routing pointer; deletion follows data-to-adapter lineage and retraining policy.
+* **Production Reality & Tradeoffs:** Per-tenant jobs/adapters cause GPU and operational fragmentation. Adapter composition is not automatically safe. Training success can mask forgetting/safety regression, so gates include base capability and adversarial tests.
+* **Red Flag:** Treating an adapter file as portable across any base model or serving it without data lineage and evaluation.
+
