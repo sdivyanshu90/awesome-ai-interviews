@@ -1,0 +1,8 @@
+### Q: Design a training-data platform for ingestion, lineage, deduplication, labeling, governance, and deletion.
+* **Difficulty:** Principal
+* **Category:** Data Platform
+* **The 10-Second Pitch:** Treat every example as a governed derivative with source/license/consent lineage, deterministic transformations, split-aware deduplication, label provenance, quality/safety filters, and deletion that reaches datasets and trained artifacts.
+* **The Deep Dive:** Connector layer snapshots sources under identity, purpose, license, consent, jurisdiction, and retention metadata. Raw zone is immutable/access-controlled; transformation DAGs normalize, parse, classify, redact, filter, and produce content-addressed records with code/config versions. Dedup uses exact hashes, normalized hashes, MinHash/LSH, embedding similarity, and domain-specific code/image methods; group duplicates before train/eval splits. Label workflows store annotator/rubric/model versions, disagreement, confidence, and adjudication. Dataset manifests select record/version IDs and document mixture/weights. Quality, PII, malware, poisoning, and benchmark-overlap scans generate review queues. Deletion graph maps source subjects/documents to chunks, labels, datasets, indexes, caches, checkpoints, and downstream models; retraining/unlearning policy and proof are explicit.
+* **Production Reality & Tradeoffs:** Near-dedup can remove legitimate rare patterns; lineage/storage is costly. Licenses and consent change. Deleting from immutable checkpoints may require retraining rather than mutation. Separate access to sensitive raw data from derived features.
+* **Red Flag:** Copying data into object storage, keeping only a URL, and assuming deleting that object removes all derivatives.
+
