@@ -1,0 +1,8 @@
+### Q: Validate RAGAS or other synthetic metrics against expert judgments and controlled perturbations.
+* **Difficulty:** Principal
+* **Category:** Metric Validation
+* **The 10-Second Pitch:** Treat a synthetic metric as a learned instrument: establish reliability, construct validity, sensitivity to known defects, subgroup behavior, and decision-threshold calibration against adjudicated experts.
+* **The Deep Dive:** Define the construct and atomic expert rubric first; collect blinded, independently labeled examples with adjudication and severity. Measure rank/linear association where appropriate, but also confusion matrices and calibration at the release threshold—high correlation can coexist with bad accept/reject decisions. Estimate confidence intervals with clustered bootstrap. Perturb clean cases by deleting support, injecting distractors, swapping entities/numbers, attaching wrong citations, and adding fluent verbosity; a valid metric should move monotonically in the intended dimension while staying invariant to irrelevant formatting. Stratify by domain, language, answer length, retrieval count, and judge familiarity. Compare against simple baselines and conduct prompt/model version robustness tests. Freeze a validation set that is not used to tune the metric.
+* **Production Reality & Tradeoffs:** Expert labels can disagree or be systematically incomplete; report reliability and adjudication policy. Synthetic metrics may be cheaper for broad monitoring but should not become sole release gates for high-severity errors. Revalidate after judge or task drift.
+* **Red Flag:** Validating a judge only by correlation with another automated judge.
+
