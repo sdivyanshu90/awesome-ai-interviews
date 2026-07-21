@@ -39,8 +39,15 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 33 | How should prompts express uncertainty, abstention, clarification, and conflicting-evidence handling? | Principal | Prompt Engineering | [Open answer](questions/033-how-should-prompts-express-uncertainty-abstention-clarification-and-conflicting-evidence-h.md) |
 | 34 | Diagnose prompt brittleness under distribution shift, multilingual inputs, long context, and adversarial text. | Principal | Debugging | [Open answer](questions/034-diagnose-prompt-brittleness-under-distribution-shift-multilingual-inputs-long-context-and.md) |
 | 35 | Implement a typed prompt renderer, token-budget allocator, schema validator, and bounded retry loop. | Mid | Coding | [Open answer](questions/035-implement-a-typed-prompt-renderer-token-budget-allocator-schema-validator-and-bounded-retr.md) |
+| 36 | How do you prompt reasoning models differently: effort and thinking budgets, when explicit chain-of-thought scaffolds hurt, and multi-turn thinking blocks. | Senior | Reasoning | [Open answer](questions/036-how-do-you-prompt-reasoning-models-differently-effort-thinking-budgets-and-multi-turn-thi.md) |
+| 37 | Design context management for an agentic loop: tool-result pruning, mid-loop compaction, external memory, and sub-agent isolation. | Principal | Context Management | [Open answer](questions/037-design-context-management-for-an-agentic-loop-pruning-compaction-external-memory-isolation.md) |
+| 38 | Explain provider prompt-caching mechanics and economics, and compute a break-even for a cached system prompt. | Senior | Performance | [Open answer](questions/038-explain-provider-prompt-caching-mechanics-and-economics-and-compute-a-break-even.md) |
+| 39 | Compare provider-native structured outputs and tool-schema extraction with prompt-based JSON plus validation. | Mid | Implementation | [Open answer](questions/039-compare-provider-native-structured-outputs-and-tool-schema-extraction-with-prompt-based-js.md) |
+| 40 | When should prompt optimization be automated (DSPy/OPRO/GEPA-style), and how do you keep the optimizer from overfitting the eval set? | Senior | Prompt Engineering | [Open answer](questions/040-when-should-prompt-optimization-be-automated-and-how-do-you-stop-eval-overfitting.md) |
+| 41 | How do you manage large tool catalogs in context: schema token cost, dynamic tool selection, and MCP tool bloat? | Senior | Context Management | [Open answer](questions/041-manage-large-tool-catalogs-schema-token-cost-dynamic-selection-and-mcp-tool-bloat.md) |
+| 42 | How do long context windows and prompt caching change the many-shot ICL and long-context-versus-RAG calculus? | Senior | System Design | [Open answer](questions/042-how-do-long-context-and-prompt-caching-change-many-shot-icl-and-the-rag-calculus.md) |
 
-**Implemented question count:** 35
+**Implemented question count:** 42
 
 [Back to complete syllabus](../SYLLABUS.md)
 
