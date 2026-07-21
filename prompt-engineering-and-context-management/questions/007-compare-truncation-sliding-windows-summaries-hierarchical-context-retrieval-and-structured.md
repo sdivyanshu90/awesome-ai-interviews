@@ -10,7 +10,7 @@ fixed high-authority policy + typed current state + recent raw turns
                     <= token budget with reserved output/tool space
 ```
 
-Assign each item priority, authority, freshness, sensitivity, dependency, token cost, and fallback. Deduplicate, preserve document boundaries, and emit a trace of what was omitted. Evaluate answer quality under counterfactual removals and long conversations.
+Assign each item priority, authority, freshness, sensitivity, dependency, token cost, and fallback. Deduplicate, preserve document boundaries, and emit a trace of what was omitted. Evaluate answer quality under counterfactual removals and long conversations. This budgeting-and-layout discipline is what 2025-26 practice calls context engineering: curating what enters the window, not just wording instructions.
 * **Production Reality & Tradeoffs:** Larger windows raise prefill/KV cost and distractors; summarization loses detail; retrieval adds latency/failure. Compaction is a state migration and must be versioned/replayable. Tenant scope and deletion apply to every cache/memory.
 * **Red Flag:** Keeping the most recent tokens only, or treating a generated summary as authoritative state.
 
