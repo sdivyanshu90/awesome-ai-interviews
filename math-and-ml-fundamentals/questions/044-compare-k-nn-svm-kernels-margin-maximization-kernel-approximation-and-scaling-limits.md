@@ -2,7 +2,7 @@
 * **Difficulty:** Senior
 * **Category:** Classical ML
 * **The 10-Second Pitch:** k-NN stores data and predicts locally under a metric; SVM learns a maximum-margin boundary, with kernels representing nonlinear feature-space inner products. Both depend strongly on scaling and degrade with dimension/size unless approximated.
-* **The Deep Dive:** k-NN predicts from the $k$ nearest points, trading low bias at small $k$ for lower variance at larger $k$. Distance concentration, irrelevant dimensions, density variation, and class imbalance break naive Euclidean voting; standardize/learn metrics and use distance-weighting. Training is cheap but exact inference/storage are $O(nd)$ per query; ANN improves speed with recall trade-offs.
+* **The Deep Dive:** k-NN predicts from the $k$ nearest points, trading low bias at small $k$ for lower variance at larger $k$. Distance concentration, irrelevant dimensions, density variation, and class imbalance break naive Euclidean voting; standardize/learn metrics and use distance-weighting. Training is cheap, storage is $O(nd)$ total, and exact inference costs $O(nd)$ per query; ANN improves speed with recall trade-offs.
 
 For binary SVM, primal soft-margin optimization is
 
