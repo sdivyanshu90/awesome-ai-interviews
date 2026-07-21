@@ -10,7 +10,7 @@ proposal model -> candidate states -> verifier/tool -> search policy -> terminal
                          +--- feedback ---+
 ```
 
-Deduplicate, cap nodes/tokens/time/cost, preserve provenance, and separate final answer from search traces. Evaluate success per compute, verifier false acceptance, diversity, and robustness to misleading states.
+Deduplicate, cap nodes/tokens/time/cost, preserve provenance, and separate final answer from search traces. Evaluate success per compute, verifier false acceptance, diversity, and robustness to misleading states. 2025-26 reasoning models (o-series, extended-thinking, R1-style RLVR-trained) internalize much of this search within a single long trace and expose test-time-compute knobs — reasoning effort or thinking budgets — instead of external tree machinery. Hand-rolled ToT scaffolds are largely superseded on such models and can even degrade results by fragmenting the trained deliberation policy across many short calls; they remain relevant for non-reasoning models and as the conceptual foundation that this training internalized.
 * **Production Reality & Tradeoffs:** Search multiplies inference and correlated candidates do not provide independent evidence. Weak judges reward verbosity. Use calculators/solvers/tests when available; direct answers win on simple tasks.
 * **Red Flag:** Assuming MCTS guarantees correctness without a trustworthy state transition and verifier.
 
