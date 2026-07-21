@@ -54,8 +54,14 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 48 | Explain warmup, cosine/linear/inverse-square-root schedules, restarts, and cooldown. | Senior | Optimization | [Open answer](questions/048-explain-warmup-cosine-linear-inverse-square-root-schedules-restarts-and-cooldown.md) |
 | 49 | Design a statistically valid offline/online experiment and stopping rule for a model launch. | Principal | Experimentation | [Open answer](questions/049-design-a-statistically-valid-offline-online-experiment-and-stopping-rule-for-a-model-launc.md) |
 | 50 | Implement stable softmax, cross-entropy, layer normalization, attention, and gradient checking from scratch. | Mid | Coding | [Open answer](questions/050-implement-stable-softmax-cross-entropy-layer-normalization-attention-and-gradient-checking.md) |
+| 51 | Explain matrix-aware optimizers: Shampoo, SOAP, and Muon’s Newton–Schulz orthogonalization. | Senior | Optimization | [Open answer](questions/051-explain-matrix-aware-optimizers-shampoo-soap-and-muon-s-newton-schulz-orthogonalization.md) |
+| 52 | Compare k-fold, stratified, grouped, and nested cross-validation, and explain how repeated model selection overfits the validation set. | Mid | Statistics | [Open answer](questions/052-compare-k-fold-stratified-grouped-and-nested-cross-validation-and-validation-overfitting.md) |
+| 53 | State convexity conditions, derive the Lagrangian dual and KKT conditions, and show how KL-constrained reward maximization yields a closed-form optimal policy. | Senior | Optimization | [Open answer](questions/053-state-convexity-conditions-derive-the-lagrangian-dual-and-kkt-conditions-and-show-how-kl.md) |
+| 54 | Define the exponential family, natural parameters, and Fisher information, and show why NLL gradients take the prediction-minus-target form across GLMs. | Senior | Probabilistic Modeling | [Open answer](questions/054-define-the-exponential-family-natural-parameters-and-fisher-information-and-show-why-nll.md) |
+| 55 | Explain split conformal prediction: the finite-sample coverage guarantee, exchangeability, and failure under distribution shift. | Senior | Statistics | [Open answer](questions/055-explain-split-conformal-prediction-the-finite-sample-coverage-guarantee-exchangeability.md) |
+| 56 | Explain weight-space averaging — EMA, SWA, and model soups — why linear mode connectivity makes it work, and when averaging fails. | Senior | Optimization | [Open answer](questions/056-explain-weight-space-averaging-ema-swa-and-model-soups-why-linear-mode-connectivity-makes.md) |
 
-**Implemented question count:** 50
+**Implemented question count:** 56
 
 [Back to complete syllabus](../SYLLABUS.md)
 
