@@ -12,6 +12,8 @@ prefix:              [source <-> source] => target1 -> target2
 ```
 
 A decoder block may contain causal self-attention followed by cross-attention; “decoder” does not imply K/V always come from the same stream. Segment/document masks can refine any mode. During cache decoding, cross-memory cache is static while self KV grows.
+
+A falsifiable test: hold one stack at fixed parameters and training tokens and toggle only the visibility mask—causal versus prefix—on prefix-conditioned infilling with identical serialization; prefix attention should win at matched decode latency, and if it does not, the bidirectional-prefix claim fails. Likewise compare cross-attention against concatenating the memory into self-attention at matched parameters, tokens, and latency to isolate the architectural rather than capacity effect.
 * **Production Reality & Tradeoffs:** Cross-attention keeps source separate/citable but adds projections and memory. Concatenating modalities into self-attention is simpler but creates quadratic interactions and boundary/mask risks. State exact masks rather than relying on names.
 * **Red Flag:** Equating self-attention with bidirectional attention or cross-attention with encoder-decoder architecture only.
 
