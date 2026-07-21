@@ -8,7 +8,7 @@ $$
 \eta_t=\eta_{min}+\tfrac12(\eta_{max}-\eta_{min})\left[1+\cos\left(\pi\frac{t-T_w}{T-T_w}\right)\right].
 $$
 
-Inverse-square-root behaves $\eta\propto1/\sqrt t$ after warmup and supports unknown/extended horizons. Restarts reset phase/rate to encourage exploration or anytime training but can disrupt a converging large model. Cooldown sharply or smoothly lowers LR for the final fraction, useful when extending a constant/long schedule.
+Inverse-square-root behaves $\eta\propto1/\sqrt t$ after warmup and supports unknown/extended horizons. Restarts reset phase/rate to encourage exploration or anytime training but can disrupt a converging large model. Cooldown sharply or smoothly lowers LR for the final fraction, useful when extending a constant/long schedule. This constant-then-cooldown pattern is now standard LLM-pretraining vocabulary as warmup-stable-decay (WSD): hold the post-warmup rate flat, then decay over a short final fraction, so any stable-phase checkpoint can be cooled down into a finished model at multiple horizons.
 
 Specify schedule in optimizer updates or tokens, not ambiguous epochs; gradient accumulation and variable packing change the mapping. Resume must restore step count. Weight decay and momentum integrate over the schedule, so changing horizon without retuning changes regularization.
 * **Production Reality & Tradeoffs:** Warmup that is too long wastes budget; too short causes spikes. Cosine is not universally superior to linear. Compare loss versus tokens and wall-clock at equal budget; late low LR can improve loss but offer poor ROI.
