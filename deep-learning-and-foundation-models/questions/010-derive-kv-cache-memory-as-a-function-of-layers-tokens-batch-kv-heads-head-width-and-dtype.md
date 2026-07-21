@@ -10,7 +10,7 @@ $$
 
 MHA uses $H_{kv}=H_q$; GQA shares each KV head among query groups; MQA uses one, reducing cache linearly. Example: $L=32$, $T=8192$, $H_{kv}=8$, $d_h=128$, BF16 gives $2\cdot32\cdot8192\cdot8\cdot128\cdot2\approx1$ GiB per sequence. Allocator block rounding, metadata, beams/speculation, and temporary buffers add overhead.
 
-Without cache, each decode step recomputes prior K/V and makes generation quadratic in repeated prefix work. With cache, projections for old tokens are reused, but each step reads a growing cache, making decode memory-bandwidth-heavy. Prefix sharing/copy-on-write lowers duplicated storage; sliding-window attention caps $T$; quantized/offloaded caches trade quality/latency.
+Without a cache, each decode step re-runs the forward pass over its entire prefix: the attention term alone is $O(T^2)$ per step, hence $O(T^3)$ summed over a length-$T$ generation, while recomputing old tokens' projections/FFNs contributes the $O(T^2)$ total term. With cache, old projections are reused and attention totals $O(T^2)$ across the generation, but each step reads a growing cache, making decode memory-bandwidth-heavy. Prefix sharing/copy-on-write lowers duplicated storage; sliding-window attention caps $T$; quantized/offloaded caches trade quality/latency.
 * **Production Reality & Tradeoffs:** KV competes with weights, workspaces, CUDA graphs, and fragmentation. Admission must reserve output growth, not only current prompt. Cache format depends on model, adapter, RoPE positions, parallel layout, and dtype; unsafe cross-tenant reuse leaks data.
 * **Red Flag:** Estimating concurrency from parameter memory alone, or saying KV cache reduces the mathematical attention length.
 
