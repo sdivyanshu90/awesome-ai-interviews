@@ -14,7 +14,16 @@ graph LR
     A --> H[Write output, not score matrix]
 ```
 
-Backward recomputes score/probability tiles from Q/K and saved row statistics rather than storing them. Causal/block masks are applied tile-wise. IO-aware tiling reduces HBM reads/writes and enables longer contexts; arithmetic remains dense $O(T^2d)$.
+Backward recomputes score/probability tiles from Q/K and saved row statistics rather than storing them. Causal/block masks are applied tile-wise. The IO complexity: for sequence length $T$, head dimension $d$, and SRAM size $M$,
+
+$$
+\underbrace{\Theta(Td+T^2)}_{\text{standard attention}}
+\quad\text{vs.}\quad
+\underbrace{\Theta\!\left(T^2d^2/M\right)}_{\text{FlashAttention}}
+\ \text{HBM accesses},
+$$
+
+so whenever $M\gg d^2$—true for typical $d\le 128$ on ~100 KB-class SRAM—FlashAttention performs roughly $M/d^2$ times fewer HBM accesses, which is where the wall-clock gain comes from: arithmetic remains dense $O(T^2d)$, but the memory traffic that actually bounds attention on modern GPUs shrinks by orders of magnitude, enabling longer contexts.
 * **Production Reality & Tradeoffs:** Speed depends on shape, dtype, mask, head dimension, hardware, and occupancy; short/odd cases may not win. Dropout RNG must be reproducible under recomputation. Flash decoding/paged attention solve related but different decode/cache problems.
 * **Red Flag:** Calling FlashAttention an approximation that changes attention values, or saying it reduces dense attention FLOPs to linear.
 
