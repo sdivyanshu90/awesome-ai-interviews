@@ -6,6 +6,8 @@
 
 Expert collapse appears as low routing entropy, hot experts, cold experts with no gradients, capacity overflow, and domain overconcentration. Capacity factor reserves roughly $cNk/E$ slots; overflow tokens may drop, reroute, pad, or use shared/dense experts. Dropping silently changes model computation and can disproportionately affect domains. Shared experts guarantee common transformation and reduce loss from routing errors but add active compute and may dominate sparse experts.
 
+Modern frontier MoEs (the DeepSeek-V3 lineage) moved to auxiliary-loss-free balancing: each expert carries a bias added to its routing score for top-k selection only, adjusted online from recent routing counts—raised when the expert is starved, lowered when hot—so balance is enforced without a gradient term that fights the language-modeling objective. Combined with fine-grained expert segmentation plus shared experts, this avoids both strong auxiliary losses and token dropping.
+
 Monitor per expert probability, tokens before/after capacity, drops, entropy, batch size, gradient/update norm, output norm, domain/language mix, and latency—not only auxiliary loss.
 * **Production Reality & Tradeoffs:** Stronger balancing improves utilization but can force semantically wrong routing and reduce specialization. Higher capacity wastes memory/padding. Expert-choice or dropless routing changes communication/control complexity. Balance globally and per expert-parallel group.
 * **Red Flag:** Tuning one auxiliary coefficient until token counts are equal and assuming quality/network balance is solved.
