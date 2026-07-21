@@ -2,7 +2,7 @@
 * **Difficulty:** Principal
 * **Category:** System Design
 * **The 10-Second Pitch:** Summarize into a typed ledger that separates confirmed facts, user preferences, decisions, unresolved questions, constraints, and pending actions; attach source turn IDs and preserve uncertainty/conflict rather than inventing resolution.
-* **The Deep Dive:** Define information obligations before prompting: high-authority instructions; identity/scope; commitments/decisions; exact numbers/dates/units; tool effects; open tasks; disputed/uncertain facts; and ephemeral chatter. Extract candidate atomic items with source turn IDs, then merge deterministically: exact confirmed state overrides older state only with an explicit correction; conflicts remain both with status; unverified model claims never become user facts. Maintain a short narrative only for conversational coherence, plus structured fields for execution.
+* **The Deep Dive:** Define information obligations before prompting: high-authority instructions; identity/scope; commitments/decisions; exact numbers/dates/units; tool effects; open tasks; disputed/uncertain facts; and ephemeral chatter. Extract candidate atomic items with source turn IDs, then merge deterministically: exact confirmed state overrides older state only with an explicit correction; conflicts remain both with status; unverified model claims never become user facts. Maintain a short narrative only for conversational coherence, plus structured fields for execution. This ledger is a core artifact of context engineering, the 2025-26 umbrella term for deciding what earns a place in the model's window.
 
 ```yaml
 constraints: [{text, source_turn, authority}]
