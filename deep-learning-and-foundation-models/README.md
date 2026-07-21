@@ -64,8 +64,16 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 58 | Explain in-context learning, induction heads, capability emergence claims, and benchmark threshold artifacts. | Principal | Interpretability | [Open answer](questions/058-explain-in-context-learning-induction-heads-capability-emergence-claims-and-benchmark-thre.md) |
 | 59 | Distinguish hallucination, uncertainty, memorization, reasoning failure, and retrieval failure mechanistically. | Principal | Foundation Models | [Open answer](questions/059-distinguish-hallucination-uncertainty-memorization-reasoning-failure-and-retrieval-failure.md) |
 | 60 | Derive position-wise FFNs and compare ReLU, GELU, GLU, GEGLU, and SwiGLU. | Senior | Architecture | [Open answer](questions/060-derive-position-wise-ffns-and-compare-relu-gelu-glu-geglu-and-swiglu.md) |
+| 61 | Explain test-time compute scaling: long chain-of-thought RL, parallel sampling with verifiers, and thinking budgets versus pretraining scale. | Principal | Foundation Models | [Open answer](questions/061-explain-test-time-compute-scaling-long-cot-rl-parallel-sampling-verifiers-and-thinking-bud.md) |
+| 62 | Derive Multi-head Latent Attention: low-rank KV compression, decoupled RoPE, and cache size versus MHA, GQA, and MQA. | Principal | Architecture | [Open answer](questions/062-derive-multi-head-latent-attention-low-rank-kv-compression-decoupled-rope-and-cache-size.md) |
+| 63 | Why do modern LLMs add multi-token-prediction heads during pretraining, and how does MTP interact with speculative decoding at serving? | Senior | Training | [Open answer](questions/063-why-do-modern-llms-add-multi-token-prediction-heads-and-how-does-mtp-interact-with-specula.md) |
+| 64 | Compare auxiliary-loss and auxiliary-loss-free MoE balancing, fine-grained expert segmentation, and shared experts. | Principal | MoE | [Open answer](questions/064-compare-auxiliary-loss-and-auxiliary-loss-free-moe-balancing-fine-grained-experts-and-shar.md) |
+| 65 | Explain maximal-update parameterization (muP) and zero-shot hyperparameter transfer across model width. | Principal | Training | [Open answer](questions/065-explain-maximal-update-parameterization-mup-and-zero-shot-hyperparameter-transfer-across-w.md) |
+| 66 | How do synthetic and distilled data change pretraining in the data-constrained regime, and when is model collapse a real risk? | Principal | Data | [Open answer](questions/066-synthetic-and-distilled-data-in-data-constrained-pretraining-and-model-collapse-risk.md) |
+| 67 | Explain low-precision pretraining in BF16 and FP8: master weights, scaling strategies, and which tensors stay in high precision. | Senior | Systems | [Open answer](questions/067-explain-low-precision-pretraining-in-bf16-and-fp8-master-weights-and-scaling-strategies.md) |
+| 68 | Explain the modern training-stability toolbox: QK-norm, attention-logit soft-capping, z-loss, and residual-scale controls. | Senior | Training | [Open answer](questions/068-explain-the-training-stability-toolbox-qk-norm-soft-capping-z-loss-and-residual-scale.md) |
 
-**Implemented question count:** 60
+**Implemented question count:** 68
 
 [Back to complete syllabus](../SYLLABUS.md)
 
