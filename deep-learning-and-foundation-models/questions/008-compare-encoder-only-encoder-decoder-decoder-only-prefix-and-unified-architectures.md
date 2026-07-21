@@ -12,6 +12,8 @@ encoder-decoder: source <------> source  => causal target via cross-attention
 decoder-only:    prompt + target, every position sees only allowed left context
 prefix LM:       prefix <------> prefix  => causal suffix
 ```
+
+A falsifiable test: train decoder-only, prefix-LM, and encoder-decoder variants at matched parameter count and training tokens on one corpus, then evaluate source-conditioned generation (summarization/translation) at matched decode latency and batch size. If encoder-decoder shows no advantage on source-heavy tasks under this control, the claimed benefit was scale or data, not the mask/interface choice.
 * **Production Reality & Tradeoffs:** Decoder-only systems benefit from common infrastructure/data but spend causal compute modeling source tokens. Encoder-decoder can be more efficient for conditional generation and explicit source separation. Mask bugs and chat templates can erase theoretical advantages; compare at matched parameters/tokens/latency.
 * **Red Flag:** Saying encoder-decoder means two independent models, or that decoder-only attention is bidirectional over the prompt unless the mask explicitly permits it.
 
