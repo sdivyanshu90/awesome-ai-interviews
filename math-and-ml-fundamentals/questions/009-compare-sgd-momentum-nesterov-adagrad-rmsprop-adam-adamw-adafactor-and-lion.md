@@ -8,7 +8,7 @@ $$
 \theta_{t+1}=\theta_t-\eta\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}.
 $$
 
-AdamW separately applies $\theta\leftarrow(1-\eta\lambda)\theta$, rather than putting $\lambda\theta$ through adaptive moments. Adafactor factorizes second-moment matrices into row/column statistics to cut $O(nm)$ state to $O(n+m)$; relative-step variants change tuning. Lion maintains momentum but updates primarily by its sign, saving one state tensor.
+AdamW separately applies $\theta\leftarrow(1-\eta\lambda)\theta$, rather than putting $\lambda\theta$ through adaptive moments. Adafactor factorizes second-moment matrices into row/column statistics to cut $O(nm)$ state to $O(n+m)$; relative-step variants change tuning. Lion maintains momentum but updates primarily by its sign, saving one state tensor. The modern frontier after AdamW is matrix-aware preconditioning: Shampoo/SOAP precondition with Kronecker-factored second-moment statistics, and Muon orthogonalizes the momentum matrix via a few Newton–Schulz iterations, now used in frontier-scale pretraining. These pay off on 2D weight matrices, where whitening the update spectrum beats coordinate-wise scaling; embeddings, norms, and other 1D parameters typically stay on AdamW.
 
 | Optimizer | Per-parameter state | Main behavior |
 |---|---:|---|
