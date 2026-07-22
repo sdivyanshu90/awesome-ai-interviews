@@ -1,0 +1,25 @@
+### Q: Design a synthetic SFT data pipeline: self-instruct, Evol-Instruct, rejection sampling, and defenses against collapse and bias transfer.
+* **Difficulty:** Senior
+* **Category:** Data
+* **The 10-Second Pitch:** Synthetic SFT is a generate-score-filter-dedup loop: Self-Instruct bootstraps new instructions from seeds, Evol-Instruct mutates them harder and broader, and rejection sampling keeps only the best-of-n responses under a scorer. The pipeline's real engineering is in the defenses—novelty and dedup gates, decontamination against evals, diversity tracking across generations, and limits on how much of the teacher's style and bias you inherit.
+* **The Deep Dive:** Self-Instruct starts from a small seed pool of human-written tasks, prompts a generator model with sampled seeds to propose new instructions, generates responses, then filters before anything re-enters the pool—the original recipe rejects any instruction whose ROUGE-L similarity to the existing pool exceeds 0.7, plus heuristic rejects (too short, too long, unanswerable, image-referencing). Evol-Instruct replaces breadth-first generation with directed mutation: in-depth evolutions add constraints, reasoning steps, or rare requirements to an instruction; in-breadth evolutions jump topic while keeping difficulty; failed evolutions (degenerate, echoing, or unanswerable outputs) are detected and discarded. Rejection sampling upgrades the response side: sample $n$ responses per instruction (commonly 4 to 16), score each with a verifier where one exists or an RM/judge rubric where it does not, and keep the argmax or everything above a threshold—the Llama-2/3 post-training reports lean heavily on exactly this best-of-n loop, feeding the winners back as SFT data.
+
+  The full pipeline with its gates:
+
+  ```text
+  seeds ─▶ generate instructions ─▶ novelty gate (ROUGE-L / embedding sim)
+              │                          │ pass
+              ▼                          ▼
+        evolve (depth/breadth)   generate n responses ─▶ score (verifier | judge rubric)
+                                         │ keep best / threshold
+                                         ▼
+        heuristic filters (length, repetition, language ID, refusal phrases)
+                                         ▼
+        decontamination (n-gram + embedding match vs eval suites)
+                                         ▼
+        dedup (MinHash ~0.8 Jaccard) ─▶ mix with human data ─▶ SFT pool ─▶ (loop)
+  ```
+
+  Two slow failure modes justify the remaining defenses. Collapse: recursive training on model output progressively loses distribution tails—each generation samples from the previous model's mode, variance shrinks, and rare task types and phrasings disappear (the model-collapse result of Shumailov et al., mild in one iteration, compounding across loop generations). Bias and style transfer: students inherit teacher tics—stock openers, verbosity, hedging patterns, formatting habits—so a corpus distilled from a single teacher trains a stylistic clone whose outputs a simple classifier can attribute to the teacher. The defenses are structural: always mix a floor of human or organic data (double-digit percent, not a token garnish), cap descendants per seed so no lineage dominates, use multiple teacher models, and measure diversity every generation—distinct-n statistics, embedding-cluster entropy over the instruction set, and the task-type histogram. That measurement is the falsifiable test for the whole design: run the loop for several generations and plot embedding-cluster entropy and rare-cluster mass per generation; monotonic decline means collapse is underway and your novelty gate is not working. The limiting case is instructive too—with a perfect verifier on a checkable domain, best-of-n filtering cannot inject false knowledge no matter how biased the teacher, which is why synthetic data is safest where rejection sampling is grounded in execution or symbolic checking and riskiest for open-ended prose scored by a judge that shares the generator's biases.
+* **Production Reality & Tradeoffs:** Cost concentrates in teacher inference—best-of-n multiplies generation spend by $n$, so most teams reserve large $n$ for verifiable domains and use cheaper judges elsewhere; judge-scored selection quietly optimizes toward judge biases (length, formatting), so audit winner-versus-loser length distributions. Decontamination must run against every benchmark you will ever report, including paraphrase-level embedding matching, because teacher models emit memorized eval items verbatim and near-verbatim. Version the pipeline like code: seed set, teacher checkpoints, filter thresholds, and generation number all belong in data lineage, or you cannot debug a quality regression two loop iterations later.
+* **Red Flag:** Running the loop with no per-generation diversity measurement and no human-data floor, or treating an LLM judge as a quality gate for data generated by the same model family—the judge shares the generator's blind spots, so the gate passes exactly the biased outputs you needed it to catch.
