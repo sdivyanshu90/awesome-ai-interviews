@@ -27,8 +27,17 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 21 | Explain preference length bias, reference choice, beta, label noise, and off-policy limitations. | Principal | Alignment | [Open answer](questions/021-explain-preference-length-bias-reference-choice-beta-label-noise-and-off-policy-limitation.md) |
 | 22 | Build adversarial and human evaluation gates for an aligned-model release. | Principal | Evaluation | [Open answer](questions/022-build-adversarial-and-human-evaluation-gates-for-an-aligned-model-release.md) |
 | 23 | Implement LoRA injection, response masking, DPO loss, and adapter checkpoint validation. | Mid | Coding | [Open answer](questions/023-implement-lora-injection-response-masking-dpo-loss-and-adapter-checkpoint-validation.md) |
+| 24 | Derive GRPO: group-relative advantages, removing the value model, KL treatment, and known biases versus PPO and RLOO. | Principal | Math | [Open answer](questions/024-derive-grpo-group-relative-advantages-removing-the-value-model-kl-treatment-and-biases.md) |
+| 25 | Design an RLVR pipeline: verifiable rewards, reward shaping, entropy and length dynamics, and elicitation versus capability creation. | Principal | Alignment | [Open answer](questions/025-design-an-rlvr-pipeline-verifiable-rewards-shaping-entropy-length-and-elicit-vs-create.md) |
+| 26 | Compare outcome reward models, process reward models, and rule-based verifiers for reasoning training. | Senior | Alignment | [Open answer](questions/026-compare-outcome-process-and-rule-based-verifier-rewards-for-reasoning-training.md) |
+| 27 | Explain LLM distillation as post-training: teacher-trace SFT, logit distillation, forward versus reverse KL, and on-policy GKD. | Senior | Training | [Open answer](questions/027-explain-llm-distillation-teacher-trace-sft-logit-kl-forward-vs-reverse-and-on-policy-gkd.md) |
+| 28 | Design a synthetic SFT data pipeline: self-instruct, Evol-Instruct, rejection sampling, and defenses against collapse and bias transfer. | Senior | Data | [Open answer](questions/028-design-a-synthetic-sft-data-pipeline-with-defenses-against-collapse-and-bias-transfer.md) |
+| 29 | Compare model merging: task arithmetic, SLERP, TIES and DARE, and model soups — when merging beats multi-task SFT. | Senior | Architecture | [Open answer](questions/029-compare-model-merging-task-arithmetic-slerp-ties-dare-and-model-soups.md) |
+| 30 | Why does fine-tuning even on benign data erode safety alignment, and how do you defend a fine-tuning API? | Principal | Safety | [Open answer](questions/030-explain-why-benign-fine-tuning-erodes-safety-alignment-and-defend-a-fine-tuning-api.md) |
+| 31 | Execute continued pretraining: data-mixture replay, learning-rate re-warming, tokenizer extension, and stopping criteria. | Senior | Training | [Open answer](questions/031-execute-continued-pretraining-replay-lr-rewarming-tokenizer-extension-and-stopping.md) |
+| 32 | Extend reward modeling beyond Bradley–Terry: generative and LLM-judge reward models, margin objectives, and evaluating the reward model itself. | Senior | Alignment | [Open answer](questions/032-extend-reward-modeling-beyond-bradley-terry-generative-judges-margins-and-rm-evaluation.md) |
 
-**Implemented question count:** 23
+**Implemented question count:** 32
 
 [Back to complete syllabus](../SYLLABUS.md)
 
