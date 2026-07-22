@@ -38,8 +38,15 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 32 | Design multi-hop retrieval that prevents error propagation and preserves supporting paths. | Principal | RAG | [Open answer](questions/032-design-multi-hop-retrieval-that-prevents-error-propagation-and-preserves-supporting-paths.md) |
 | 33 | Design federated enterprise search across data regions and independently governed sources. | Principal | System Design | [Open answer](questions/033-design-federated-enterprise-search-across-data-regions-and-independently-governed-sources.md) |
 | 34 | Implement hybrid retrieval, reciprocal-rank fusion, reranking, citation assembly, and evaluation. | Mid | Coding | [Open answer](questions/034-implement-hybrid-retrieval-reciprocal-rank-fusion-reranking-citation-assembly-and-evaluati.md) |
+| 35 | Design agentic retrieval: search as a tool, iterative query refinement, stopping criteria, and cost control versus single-shot RAG. | Principal | Architecture | [Open answer](questions/035-design-agentic-retrieval-search-as-a-tool-iterative-query-refinement-stopping-criteria-and.md) |
+| 36 | Design retrieval triggering and corrective re-retrieval: when to retrieve at all, self-assessment, and Self-RAG/CRAG-style loops. | Senior | RAG | [Open answer](questions/036-design-retrieval-triggering-and-corrective-re-retrieval-when-to-retrieve-at-all-self-asses.md) |
+| 37 | Compare contextual retrieval (index-time LLM chunk context), document-summary prepending, and late chunking. | Senior | RAG | [Open answer](questions/037-compare-contextual-retrieval-index-time-llm-chunk-context-document-summary-prepending-and.md) |
+| 38 | Explain Matryoshka embeddings, dimension truncation, and int8/binary quantization with full-precision rescoring. | Senior | Retrieval | [Open answer](questions/038-explain-matryoshka-embeddings-dimension-truncation-and-int8-binary-quantization-with-full.md) |
+| 39 | Design visual document retrieval: ColPali-style late interaction over page images versus OCR-then-text pipelines. | Principal | Retrieval | [Open answer](questions/039-design-visual-document-retrieval-colpali-style-late-interaction-over-page-images-versus-oc.md) |
+| 40 | Select an embedding model: MTEB/BEIR pitfalls, leaderboard contamination, and building a domain evaluation harness. | Mid | Evaluation | [Open answer](questions/040-select-an-embedding-model-mteb-beir-pitfalls-leaderboard-contamination-and-building-a-doma.md) |
+| 41 | Design semantic response caching for RAG: similarity thresholds, invalidation on corpus change, and per-tenant isolation. | Senior | System Design | [Open answer](questions/041-design-semantic-response-caching-for-rag-similarity-thresholds-invalidation-on-corpus-chan.md) |
 
-**Implemented question count:** 34
+**Implemented question count:** 41
 
 [Back to complete syllabus](../SYLLABUS.md)
 
