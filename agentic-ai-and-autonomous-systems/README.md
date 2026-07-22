@@ -31,8 +31,17 @@ Every syllabus question has one independent Markdown answer file. The index sepa
 | 25 | Design a data-analysis agent with governed datasets, executable notebooks, and auditable reports. | Principal | System Design | [Open answer](questions/025-design-a-data-analysis-agent-with-governed-datasets-executable-notebooks-and-auditable-rep.md) |
 | 26 | Design an incident-response agent with alerts, runbooks, credentials, containment, and handoff. | Principal | System Design | [Open answer](questions/026-design-an-incident-response-agent-with-alerts-runbooks-credentials-containment-and-handoff.md) |
 | 27 | Implement a durable tool-calling state machine with budgets, idempotency, approval, and replay. | Mid | Coding | [Open answer](questions/027-implement-a-durable-tool-calling-state-machine-with-budgets-idempotency-approval-and-repla.md) |
+| 28 | Explain MCP: host, client, and server roles; tools, resources, and prompts; transports; auth; and when it beats bespoke integration. | Senior | Architecture | [Open answer](questions/028-explain-mcp-host-client-and-server-roles-tools-resources-prompts-transports-auth-and-fit.md) |
+| 29 | Explain native tool calling under the hood: schema injection, constrained emission, tool choice, parallel calls, and failure modes. | Senior | Systems | [Open answer](questions/029-explain-native-tool-calling-schema-injection-constrained-emission-tool-choice-parallel-cal.md) |
+| 30 | Design context engineering for a long-horizon agent: compaction checkpoints, tool-result truncation, external memory, and cache-friendly ordering. | Senior | Architecture | [Open answer](questions/030-design-context-engineering-compaction-truncation-external-memory-and-cache-ordering.md) |
+| 31 | Design a computer-use agent: screenshot-action loop, grounding, latency, misclick recovery, and safety gating. | Principal | System Design | [Open answer](questions/031-design-a-computer-use-agent-screenshot-action-loop-grounding-latency-misclick-recovery.md) |
+| 32 | When should you spawn subagents for context isolation versus one long context? | Senior | Multi-Agent Systems | [Open answer](questions/032-when-should-you-spawn-subagents-for-context-isolation-versus-one-long-context.md) |
+| 33 | Explain A2A-style agent interoperability: agent cards, task lifecycle, and cross-organization authentication. | Principal | Multi-Agent Systems | [Open answer](questions/033-explain-a2a-agent-interoperability-agent-cards-task-lifecycle-and-cross-org-authentication.md) |
+| 34 | Survey the agent benchmark landscape: SWE-bench Verified, OSWorld, GAIA, tau-bench, and WebArena — and pass@k versus pass^k. | Mid | Evaluation | [Open answer](questions/034-survey-agent-benchmarks-swe-bench-verified-osworld-gaia-tau-bench-webarena-pass-at-k-vs-k.md) |
+| 35 | How do reasoning models change agent design: interleaved thinking, thinking budgets, and when ReAct scaffolding is obsolete. | Senior | Architecture | [Open answer](questions/035-how-reasoning-models-change-agent-design-interleaved-thinking-budgets-and-react-scaffolds.md) |
+| 36 | Decide between improving the harness and training the model: SFT/RL on tool-use trajectories, reward hacking, and the decision criteria. | Principal | LLMOps | [Open answer](questions/036-decide-between-improving-the-harness-and-training-the-model-sft-rl-and-reward-hacking.md) |
 
-**Implemented question count:** 27
+**Implemented question count:** 36
 
 [Back to complete syllabus](../SYLLABUS.md)
 
