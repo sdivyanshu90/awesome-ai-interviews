@@ -8,7 +8,7 @@ $$
 \|q-d\|_2^2=\|q\|^2+\|d\|^2-2q^Td=2-2q^Td,
 $$
 
-so rankings coincide. Without document normalization, maximum inner product search (MIPS) lets norm encode confidence, popularity, length, or training artifacts; converting to cosine discards that information. Euclidean distance is translation/scale-sensitive and some ANN indexes require a declared metric. Zero vectors make cosine undefined.
+so rankings coincide. Without document normalization, maximum inner product search (MIPS) lets norm encode confidence, popularity, length, or training artifacts; converting to cosine discards that information. Euclidean distance is translation-invariant—$\|(q+t)-(d+t)\|_2=\|q-d\|_2$ for any offset $t$—but scale-sensitive, whereas cosine and dot product are anchored to the origin: translating embeddings (for example mean-centering) changes angles and inner products while leaving L2 rankings intact. Some ANN indexes require a declared metric. Zero vectors make cosine undefined.
 
 Normalize consistently at both indexing and query time, using the embedding model’s documented query/document prefixes and objective. Score magnitudes are not relevance probabilities and cannot be compared across models or queries without calibration. MIPS can be reduced to Euclidean search by asymmetric dimension transforms under bounded norms, but native support is preferable.
 
