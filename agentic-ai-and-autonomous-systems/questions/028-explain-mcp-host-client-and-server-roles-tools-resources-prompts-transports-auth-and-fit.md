@@ -1,0 +1,25 @@
+### Q: Explain MCP: host, client, and server roles; tools, resources, and prompts; transports; auth; and when it beats bespoke integration.
+* **Difficulty:** Senior
+* **Category:** Architecture
+* **The 10-Second Pitch:** MCP standardizes how an AI application attaches external capabilities: the host owns the model loop and policy and runs one client per connected server over JSON-RPC; servers expose tools (model-invoked), resources (application-selected), and prompts (user-selected). Transports are stdio locally and streamable HTTP remotely with OAuth 2.1 authorization. It wins when many clients must reuse many integrations; bespoke wins for single-vendor, latency-critical, tightly tuned tool surfaces.
+* **The Deep Dive:** The host is the AI application — an IDE, chat client, or agent runtime — that owns the conversation, the model calls, permissions, and consent UI. For each configured server the host instantiates a dedicated client holding a stateful one-to-one JSON-RPC 2.0 session, so a host with four servers runs four independent clients. Sessions start with an initialize handshake that exchanges a protocol version and capability sets: each side declares which primitives it supports (tools, resources, prompts on the server side; sampling, roots, and elicitation on the client side), and both sides may rely only on negotiated features. That negotiation is what lets a minimal server and a rich host interoperate without breaking.
+
+  The three server primitives are distinguished by an inversion of control — who decides invocation. Tools are model-controlled: their JSON Schemas enter the model's context and the model decides to call them, though the host executes only after its own permission checks. Resources are application-controlled: URI-addressed content the host reads and injects as context, optionally with change subscriptions; the model never fetches them itself. Prompts are user-controlled templates surfaced as commands or menu items. In the reverse direction, sampling lets a server request a completion through the host's model access, and elicitation lets it request user input — both keep model usage and user interaction mediated by the host rather than granting servers direct access.
+
+  ```mermaid
+  flowchart LR
+    subgraph HOST["Host application: model loop, policy, consent"]
+      C1[Client 1]
+      C2[Client 2]
+    end
+    C1 -- stdio JSON-RPC --> S1["Local server (filesystem)"]
+    C2 -- streamable HTTP + OAuth --> S2["Remote server (ticketing API)"]
+    S1 -- tools, resources, prompts --> C1
+    S2 -- tools, resources, prompts --> C2
+  ```
+
+  Transports: stdio spawns the server as a subprocess and exchanges newline-delimited JSON-RPC over stdin/stdout — no network listener, credentials via environment, ideal for local capability like filesystem or git. Streamable HTTP serves remote deployment: the client POSTs JSON-RPC to a single endpoint, the server may upgrade a response to an SSE stream for progress and server-initiated messages, and a session id header ties requests together; this replaced the earlier two-endpoint HTTP-plus-SSE design. For authorization, an HTTP server acts as an OAuth 2.1 resource server: it publishes protected-resource metadata pointing at its authorization server, clients bind tokens to that specific server using resource indicators, and servers must reject tokens minted for another audience — forwarding a client's token to an upstream API (token passthrough) is explicitly a confused-deputy antipattern.
+
+  Bespoke integration still wins when one org controls both sides: direct function calling avoids a protocol hop, lets you tune schemas and descriptions per model, and skips capability negotiation you do not need. Failure trace for naive adoption: a host flattens three connected servers' 45 overlapping tool schemas into every request; tool-selection accuracy degrades and prefix tokens balloon. The falsifiable test is to plot tool-choice accuracy against connected-server count on a fixed eval — if it drops, the protocol did not fail, the host's curation did, and namespacing plus per-task tool filtering is host policy MCP deliberately leaves to you.
+* **Production Reality & Tradeoffs:** Every connected server's schemas cost input tokens on every call, so hosts need tool filtering and prompt caching. Third-party server metadata is untrusted input: tool descriptions can carry injection payloads, and a server can change behavior after approval (rug pull), so pin versions and re-review on update. stdio servers inherit the host's OS user unless sandboxed. The spec revises quickly, so client-server version skew and partial capability support are routine; log negotiated capabilities and JSON-RPC errors or you cannot debug interop.
+* **Red Flag:** Claiming the integration is safe or simpler "because it uses MCP" — the model still just sees tool schemas in context; MCP standardizes plumbing and discovery, while permissioning, sandboxing, egress control, and description vetting remain the host's job.
