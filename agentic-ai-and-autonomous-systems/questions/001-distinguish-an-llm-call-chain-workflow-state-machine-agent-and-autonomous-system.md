@@ -8,7 +8,7 @@ The decisive property is **closed-loop action selection**: observations change s
 workflow: input -> fixed graph -> output
 agent:    state -> choose action -> observe -> update state -> stop?
 ```
-Use the weakest construct that satisfies adaptation requirements; every additional choice expands the state space to test.
+Use the weakest construct that satisfies adaptation requirements; every additional choice expands the state space to test. A concrete falsification test: rerun the same task with one tool result perturbed; if the executed step sequence cannot change in response, the system is a workflow with LLM calls in it, not an agent, however it is marketed.
 
 * **Production Reality & Tradeoffs:** Unnecessary autonomy increases nondeterminism, attack surface, cost, and debugging burden. A deterministic orchestrator plus narrow LLM decisions is often the best production design.
 * **Red Flag:** Calling any application that uses an LLM and an API an autonomous agent.
